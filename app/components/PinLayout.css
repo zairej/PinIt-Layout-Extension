@@ -1,0 +1,48 @@
+section.pin {
+  -webkit-backface-visibility: hidden;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  -webkit-transform: rotateY(0deg);
+  backface-visibility: hidden;
+  background: #fff;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+  display: inline-block;
+  position: relative;
+  transform: rotateY(0deg);
+  width: 236px;
+  border-radius: 6px;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", arial, sans-serif;
+  color: rgb(33, 25, 34);
+  font-size: 12px;
+  text-align: left;
+}
+
+.images {
+  width: 236px;
+  min-height: 100px;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+}
+
+.canvas {
+}
+
+.pinMetaWrapper {
+  padding: 5px 12px;
+}
+
+.pinDescription {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+  font-size: 13px;
+  line-height: 17px;
+  word-wrap: break-word;
+  border: 0;
+  padding: 5px;
+  width: 100%;
+  outline: none;
+  resize: vertical;
+}

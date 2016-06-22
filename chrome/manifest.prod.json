@@ -1,0 +1,26 @@
+{
+  "version": "0.0.0",
+  "name": "pinterest-layout-ext",
+  "manifest_version": 2,
+  "description": "Pinterest layout",
+  "browser_action": {
+    "default_title": "Pinterest Layout",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "img/Pin_Layout_16.png",
+    "48": "img/Pin_Layout_48.png",
+    "128": "img/Pin_Layout_128.png"
+  },
+  "web_accessible_resources": [
+    "inject.html",
+    "img/P_ChoosePins.png"
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "permissions": [
+    "contextMenus", "tabs", "storage", "activeTab", "<all_urls>"
+  ],
+  "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+}

@@ -1,0 +1,23 @@
+.PinLayoutImagePanel {
+  position: relative;
+}
+
+input[type=range].zoom {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5%;
+  width: 90%;
+  z-index: 99;
+}
+
+:global(.react-resizable-handle) {
+  display: none;
+}
+
+.PinLayoutImagePanel:hover .zoom {
+  display: block;
+}
+.PinLayoutImagePanel:hover :global(.react-resizable-handle) {
+  display: block;
+}

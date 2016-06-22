@@ -1,0 +1,6 @@
+export const ADD_IMAGE = 'ADD_IMAGE';
+export const REMOVE_IMAGE = 'REMOVE_IMAGE';
+export const SET_POSITION = 'SET_POSITION';
+export const REPLACE_IMAGES = 'REPLACE_IMAGES';
+export const TOGGLE_DOCK = 'TOGGLE_DOCK';
+export const TOGGLE_IMAGE_SELECTION = 'TOGGLE_IMAGE_SELECTION';

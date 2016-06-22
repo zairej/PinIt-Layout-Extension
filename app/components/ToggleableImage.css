@@ -1,0 +1,68 @@
+.ToggleableImage {
+  width: 236px;
+  position: relative;
+  display: inline-block;
+}
+.ToggleableImage img {
+  width: 236px;
+  transition: all 100ms ease-in-out;
+}
+.ToggleableImage:not(.checked) img {
+  transform: scale(1);
+  opacity: 1;
+}
+.ToggleableImage.checked img {
+  opacity: 0.8;
+  transform: scale(0.8);
+}
+.checkbox {
+  position: absolute;
+  color: #fff;
+  right: 10px;
+  top: 0;
+  font-size: 40px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 100ms ease-in-out;
+  z-index: 99;
+}
+.ToggleableImage:not(.checked) .checkbox {
+  opacity: 0;
+  transform: scale(0.1);
+}
+.ToggleableImage.checked .checkbox {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/*.checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #222;
+  background: #fff;
+  color: #666;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.checkbox:after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 1px;
+}
+.ToggleableImage:hover .checkbox {
+  opacity: 1;
+}
+.ToggleableImage:not(.checked) {
+  opacity: 0.8;
+}
+.ToggleableImage.checked {
+  opacity: 1;
+}
+.ToggleableImage.checked .checkbox {
+  background: #000 !important;
+}*/
