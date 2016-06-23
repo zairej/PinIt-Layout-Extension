@@ -48,7 +48,10 @@ class InjectApp extends Component {
 
   buttonOnClick = () => {
     this.setState({ isVisible: !this.state.isVisible });
-    this.populateImagesIntoStore();
+    if (this.store.getState().images.length === 0){
+      this.populateImagesIntoStore();
+
+    }
   };
 
   render() {
