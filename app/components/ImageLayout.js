@@ -32,6 +32,7 @@ class ImageLayout extends Component {
     // This column count may not ever be used for display
     this.state = { columnHeights: Array.from({ length: props.columns }, () => 0) };
     this.handleResize = this.handleResize.bind(this);
+    this.usedCount = 0;
   }
 
   /*
@@ -107,18 +108,33 @@ class ImageLayout extends Component {
 
   render() {
     const { images } = this.props;
-    return (
-      <div className="ImageLayout" style={{ position: 'relative' }} ref="root">
-      {images.map(image => (
-        <div style={this.getItemStyle(image)}>
-          <ToggleableImage
-            key={image.id}
-            image={image}
-          />
+
+    if (images.length === 0) {
+      if (this.usedCount === 0) {
+        this.usedCount += 1;
+        return (
+         <div className="ImageLayout" style={{ position: 'relative', fontSize: 50}} ref="root" >
+          NO IMAGES
+          </div>
+        );
+      }
+    }
+    else {
+      this.usedCount += 1;
+      return (
+        <div className="ImageLayout" style={{ position: 'relative' }} ref="root">
+        {images.map(image => (
+          <div style={this.getItemStyle(image)}>
+            <ToggleableImage
+              key={image.id}
+              image={image}
+              
+            />
+          </div>
+        ))}
         </div>
-      ))}
-      </div>
-    );
+      );
+    }
   }
 }
 

@@ -8,7 +8,7 @@ import style from './PinLayoutImagePanel.css';
 // TODO: Export to config file import
 const PIN_WIDTH = 236;
 const MIN_PIN_HEIGHT = 100;
-const MAX_PIN_HEIGHT = 200; //Max height for pictures on right sidebar
+const MAX_PIN_HEIGHT = 1680 / 2;
 const MIN_ZOOM = 0.2;
 const MAX_ZOOM = 2;
 const DEFAULT_ZOOM = 1;
@@ -55,8 +55,7 @@ class PinLayoutImagePanel extends Component {
 
         <ResizableBox
           width={PIN_WIDTH}
-          height={MAX_PIN_HEIGHT}  
-          // Set height to max
+          height={height}
           minConstraints={[PIN_WIDTH, MIN_PIN_HEIGHT]}
           maxConstraints={[PIN_WIDTH, MAX_PIN_HEIGHT]}
           onResize={this.handleResizableBoxResize}
@@ -66,8 +65,7 @@ class PinLayoutImagePanel extends Component {
             scale={zoom}
             border={0}
             width={PIN_WIDTH}
-            height={MAX_PIN_HEIGHT}
-            // Set height to max
+            height={height}
           />
         </ResizableBox>
       </div>

@@ -12,12 +12,12 @@ input[type=range].zoom {
 }
 
 :global(.react-resizable-handle) {
-  visibility: none;
+  opacity: 0;
 }
 
 .PinLayoutImagePanel:hover .zoom {
   display: block;
 }
 .PinLayoutImagePanel:hover :global(.react-resizable-handle) {
-  display: block;
+  opacity: 1;
 }
