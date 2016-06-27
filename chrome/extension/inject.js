@@ -48,9 +48,13 @@ class InjectApp extends Component {
 
   buttonOnClick = () => {
     this.setState({ isVisible: !this.state.isVisible });
-    if (this.store.getState().images.length === 0){
+    if (this.store.getState().images.length === 0) {
       this.populateImagesIntoStore();
-
+    }
+    if (this.state.isVisible === true) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
     }
   };
 
