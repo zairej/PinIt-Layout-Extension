@@ -49,9 +49,9 @@ class InjectApp extends Component {
       this.populateImagesIntoStore();
     }
     if (this.state.isVisible === true) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     }
   };
 
@@ -80,7 +80,7 @@ window.addEventListener('load', () => {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if(request.toggle) {
+    if (request.toggle) {
       handleExtensionClick();
     }
   });
