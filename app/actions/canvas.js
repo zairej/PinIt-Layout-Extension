@@ -11,3 +11,4 @@ export function removeImage(id) {
 export function positionImage({ id, position }) {
   return { type: types.POSITION_IMAGE, payload: { id, position } };
 }
+
