@@ -5,25 +5,23 @@ import PinLayout from '../components/PinLayout';
 import * as ImageActions from '../actions/images';
 import style from './App.css';
 import ImageLayout from '../components/ImageLayout';
+import { toggleVisibility } from '../actions/visibility';
 
 
-@connect(
-  state => ({
-    images: state.images
-  }),
-  dispatch => ({
-    actions: bindActionCreators(ImageActions, dispatch)
-  })
-)
+@connect()
 export default class App extends Component {
 
-  static propTypes = {
-    images: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
-  };
+  constructor(props) {
+    super(props);
+    this.handleExitClick = this.handleExitClick.bind(this);
+  }
 
   handleSave() {
     alert('If only we had enough time! So close.');
+  }
+
+  handleExitClick() {
+    this.props.dispatch(toggleVisibility(false));
   }
 
   render() {
@@ -39,6 +37,7 @@ export default class App extends Component {
           </div>
         </div>
         <div className={style.pinPanel}>
+        <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
           <PinLayout />
           <div className={style.pinPanelFooter}>
             <button className={style.btnSave} onClick={this.handleSave}>Save</button>
@@ -48,7 +47,3 @@ export default class App extends Component {
     );
   }
 }
-
-App.contextTypes = {
-  store: PropTypes.object
-};

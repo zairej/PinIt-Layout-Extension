@@ -5,6 +5,7 @@ import Root from '../../app/containers/Root';
 import createStore from '../../app/store/configureStore';
 import { replaceImages } from '../../app/actions/images';
 import { addImage } from '../../app/actions/canvas';
+import { toggleVisibility } from '../../app/actions/visibility';
 import uuid from 'uuid';
 
 // TODO: Export to config file import
@@ -13,13 +14,14 @@ const MIN_PIN_HEIGHT = 200;
 
 let handleExtensionClick = () => {};
 
+
 class InjectApp extends Component {
   constructor(props) {
     super(props);
     this.hostname = window.location.hostname.replace('www.', '');
 
-    this.store = createStore({ images: [] });
-    this.state = { isVisible: false };
+    this.store = createStore({ images: [], isVisible: false });
+    this.store.subscribe(this.forceUpdate.bind(this));
 
     handleExtensionClick = () => this.buttonOnClick();
   }
@@ -44,11 +46,12 @@ class InjectApp extends Component {
   }
 
   buttonOnClick = () => {
-    this.setState({ isVisible: !this.state.isVisible });
+    const isVisible = !this.store.getState().isVisible;
+    this.store.dispatch(toggleVisibility(isVisible));
     if (this.store.getState().images.length === 0) {
       this.populateImagesIntoStore();
     }
-    if (this.state.isVisible === true) {
+    if (isVisible === true) {
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
     } else {
@@ -63,7 +66,7 @@ class InjectApp extends Component {
         position="bottom"
         dimMode="transparent"
         defaultSize={1}
-        isVisible={this.state.isVisible}
+        isVisible={this.store.getState().isVisible}
         dockStyle={{ background: 'rgba(0,0,0,0.8)' }}
       >
         <Root store={this.store} />,
