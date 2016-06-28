@@ -16,6 +16,7 @@ let handleExtensionClick = () => {};
 class InjectApp extends Component {
   constructor(props) {
     super(props);
+    this.hostname = window.location.hostname.replace('www.', '');
 
     this.store = createStore({ images: [] });
     this.state = { isVisible: false };
@@ -28,14 +29,15 @@ class InjectApp extends Component {
     document.querySelectorAll('img').forEach((img) => {
       if (img.width >= PIN_WIDTH && /* min width */
         img.height >= MIN_PIN_HEIGHT && /* min height */
-        img.src.substring(0, 5) !== 'data:' /* not B64 */) {
+        img.src.substring(0, 5) !== 'data:' && /* not B64 */
+        img.src.indexOf(this.hostname) !== -1) {
         images.push({
           id: uuid.v1(),
           url: img.src,
           width: img.width,
           height: img.height,
           isSelected: false,
-        });
+        }); console.log(this.hostname);
       }
     });
     this.store.dispatch(replaceImages(images));

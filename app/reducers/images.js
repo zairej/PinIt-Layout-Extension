@@ -10,16 +10,13 @@ const initialState = [];
 //   return [...state.slice(0, idx), { ...target, ...changes }, ...state.slice(idx + 1)];
 // };
 
-const countSelectedImages = (images) => images.filter(img => img.isSelected).length
+const countSelectedImages = (images) => images.filter(img => img.isSelected).length;
 
 const actionsMap = {
   // [ActionTypes.ADD_IMAGE](state, { image }) {
   //   return [...state, image];
   // },
   [ActionTypes.REPLACE_IMAGES](state, { images }) {
-    if (images.length && countSelectedImages(images) === 0) {
-      images[0].isSelected = false;
-    }
     return [...images];
   },
   // [ActionTypes.SELECT_IMAGE](state, { id }) {
