@@ -38,11 +38,6 @@ class InjectApp extends Component {
         });
       }
     });
-    if (images.length) {
-      const image = images[0];
-      image.isSelected = true;
-      this.store.dispatch(addImage(image));
-    }
     this.store.dispatch(replaceImages(images));
   }
 

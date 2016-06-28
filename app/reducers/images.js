@@ -18,7 +18,7 @@ const actionsMap = {
   // },
   [ActionTypes.REPLACE_IMAGES](state, { images }) {
     if (images.length && countSelectedImages(images) === 0) {
-      images[0].isSelected = true;
+      images[0].isSelected = false;
     }
     return [...images];
   },
