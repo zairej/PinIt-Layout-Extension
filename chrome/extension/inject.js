@@ -4,16 +4,16 @@ import Dock from 'react-dock';
 import Root from '../../app/containers/Root';
 import createStore from '../../app/store/configureStore';
 import { replaceImages } from '../../app/actions/images';
-import { addImage } from '../../app/actions/canvas';
 import { toggleVisibility } from '../../app/actions/visibility';
 import uuid from 'uuid';
 
 // TODO: Export to config file import
 const PIN_WIDTH = 236;
 const MIN_PIN_HEIGHT = 200;
+const alertMessage = 'Oops! That button doesn\'t work on Pinterest. Try using' +
+                      ' the red Pin It button at the top of any Pin.';
 
 let handleExtensionClick = () => {};
-
 
 class InjectApp extends Component {
   constructor(props) {
@@ -42,19 +42,27 @@ class InjectApp extends Component {
     });
     this.store.dispatch(replaceImages(images));
   }
+  validSite() {
+    return (window.location.href.indexOf('pinterest.com') === -1);
+  }
 
   buttonOnClick = () => {
-    const isVisible = !this.store.getState().isVisible;
-    this.store.dispatch(toggleVisibility(isVisible));
-    if (this.store.getState().images.length === 0) {
-      this.populateImagesIntoStore();
-    }
-    if (isVisible === true) {
-      document.body.style.overflow = "hidden";
-      document.body.style.position = "fixed";
+    if (!this.validSite()) {
+      alert(alertMessage);
     } else {
-      document.body.style.overflow = "auto";
-      document.body.style.position = "static";
+      this.validSite = true;
+      const isVisible = !this.store.getState().isVisible;
+      this.store.dispatch(toggleVisibility(isVisible));
+      if (this.store.getState().images.length === 0) {
+        this.populateImagesIntoStore();
+      }
+      if (isVisible === true) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+      } else {
+        document.body.style.overflow = 'auto';
+        document.body.style.position = 'static';
+      }
     }
   };
 

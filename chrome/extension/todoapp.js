@@ -8,7 +8,7 @@ chrome.storage.local.get('state', obj => {
   const initialState = JSON.parse(state || '{}');
 
   console.log('todoapp.js');
-    
+
   const createStore = require('../../app/store/configureStore');
   ReactDOM.render(
     <Root store={createStore(initialState)} />,
