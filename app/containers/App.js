@@ -22,6 +22,8 @@ export default class App extends Component {
 
   handleExitClick() {
     this.props.dispatch(toggleVisibility(false));
+    document.body.style.overflow = "auto";
+    document.body.style.position = "static";
   }
 
   render() {
