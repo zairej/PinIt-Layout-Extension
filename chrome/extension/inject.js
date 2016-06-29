@@ -11,7 +11,7 @@ import uuid from 'uuid';
 const PIN_WIDTH = 236;
 const MIN_PIN_HEIGHT = 200;
 const alertMessage = 'Oops! That button doesn\'t work on Pinterest. Try using' +
-                      ' the red Pin It button at the top of any Pin.';
+                      ' the red Save button at the top of any Pin.';
 
 let handleExtensionClick = () => {};
 
