@@ -47,7 +47,7 @@ class InjectApp extends Component {
   }
 
   buttonOnClick = () => {
-    if (!this.validSite()) {
+    if (!this.validSite) {
       alert(alertMessage);
     } else {
       this.validSite = true;
