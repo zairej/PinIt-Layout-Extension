@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDom from 'react-dom';
 import ResizableBox from './ResizableBox';
-import AvatarEditor from 'react-avatar-editor';
+import AvatarEditor from './AvatarEditor';
 import throttle from 'lodash.throttle';
 import style from './PinLayoutImagePanel.css';
 
