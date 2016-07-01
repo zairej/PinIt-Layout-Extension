@@ -30,7 +30,8 @@ class InjectApp extends Component {
     document.querySelectorAll('img').forEach((img) => {
       if (img.width >= PIN_WIDTH && /* min width */
         img.height >= MIN_PIN_HEIGHT && /* min height */
-        img.src.substring(0, 5) !== 'data:' /* not B64 */) {
+        img.src.substring(0, 5) !== 'data:' && /* not B64 */
+        img.src !== '') {
         images.push({
           id: uuid.v1(),
           url: img.src,
