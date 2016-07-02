@@ -108,7 +108,7 @@ class ImageLayout extends Component {
 
   render() {
     const { images } = this.props;
-
+    console.log(JSON.stringify(images));
     if (images.length === 0) {
       if (this.usedCount === 0) {
         this.usedCount += 1;

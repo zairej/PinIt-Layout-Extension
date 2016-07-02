@@ -10,8 +10,6 @@ const initialState = [];
 //   return [...state.slice(0, idx), { ...target, ...changes }, ...state.slice(idx + 1)];
 // };
 
-const countSelectedImages = (images) => images.filter(img => img.isSelected).length;
-
 const actionsMap = {
   // [ActionTypes.ADD_IMAGE](state, { image }) {
   //   return [...state, image];
@@ -37,10 +35,19 @@ const actionsMap = {
       selectedTarget,
       ...state.slice(idx + 1)
     ];
-    // // You always need at least one selected
-    // if (countSelectedImages(newState) === 0) {
-    //   return state;
-    // }
+
+    return newState;
+  },
+
+  [ActionTypes.UNSELECT_ALL_IMAGES](state, { images }) {
+    const newState = [];
+
+    for (const image of images) {
+      if (image.isSelected) {
+        image.isSelected = false;
+      }
+      newState.push(image);
+    }
     return newState;
   }
 };

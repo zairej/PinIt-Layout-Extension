@@ -12,3 +12,6 @@ export function positionImage({ id, position }) {
   return { type: types.POSITION_IMAGE, payload: { id, position } };
 }
 
+export function removeAllCanvasImages() {
+  return { type: types.REMOVE_ALL_CANVAS_IMAGES };
+}

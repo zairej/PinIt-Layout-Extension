@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import style from './PinLayout.css';
 import PinLayoutImagePanel from './PinLayoutImagePanel';
 
-const DEFAULT_PIN_IMG_HEIGHT = 300
+const DEFAULT_PIN_IMG_HEIGHT = 300;
 // TODO: Export to config file import
-const PIN_WIDTH = 236
+const PIN_WIDTH = 236;
 
 @connect(
   state => ({

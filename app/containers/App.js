@@ -6,6 +6,7 @@ import * as ImageActions from '../actions/images';
 import style from './App.css';
 import ImageLayout from '../components/ImageLayout';
 import { toggleVisibility } from '../actions/visibility';
+import { removeAllCanvasImages } from '../actions/canvas';
 
 
 @connect()
@@ -22,6 +23,7 @@ export default class App extends Component {
 
   handleExitClick() {
     this.props.dispatch(toggleVisibility(false));
+    this.props.dispatch(removeAllCanvasImages());
     document.body.style.overflow = "auto";
     document.body.style.position = "static";
   }

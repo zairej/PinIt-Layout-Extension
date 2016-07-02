@@ -25,6 +25,9 @@ const actionsMap = {
   [ActionTypes.POSITION_IMAGE](state, { id, position }) {
     return merge(state, id, position);
   },
+  [ActionTypes.REMOVE_ALL_CANVAS_IMAGES]() {
+    return [];
+  },
 };
 
 export default function canvasReducer(state = initialState, action) {
