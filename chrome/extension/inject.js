@@ -24,18 +24,20 @@ class InjectApp extends Component {
 
     this.store = createStore({ images: [], isVisible: false });
     this.store.subscribe(this.forceUpdate.bind(this));
-    this.state = { doc: JSON.stringify(document) };
 
     handleExtensionClick = () => this.buttonOnClick();
   }
 
   populateImagesIntoStore = () => {
     const images = [];
+    const urls = [];
+    console.log(document.URL);
     document.querySelectorAll('img').forEach((img) => {
       if (img.width >= PIN_WIDTH && /* min width */
         img.height >= MIN_PIN_HEIGHT && /* min height */
         img.src.substring(0, 5) !== 'data:' && /* not B64 */
-        img.src !== '') {
+        img.src !== '' && urls.indexOf(img.src) === -1) {
+        urls.push(img.src);
         images.push({
           id: uuid.v1(),
           url: img.src,
@@ -45,6 +47,7 @@ class InjectApp extends Component {
         });
       }
     });
+    console.log(1);
     this.store.dispatch(replaceImages(images));
   }
   validSite() {
@@ -60,7 +63,8 @@ class InjectApp extends Component {
       const isVisible = !this.store.getState().isVisible;
       this.store.dispatch(toggleVisibility(isVisible));
 
-      this.store.dispatch(replaceImages([[]]));
+      //this.store.dispatch(replaceImages([[]]));
+      //console.log(this.store.getState('images').images, 'store');
       this.populateImagesIntoStore();
 
       if (isVisible) {
