@@ -108,32 +108,19 @@ class ImageLayout extends Component {
 
   render() {
     const { images } = this.props;
-
-    if (images.length === 0) {
-      if (this.usedCount === 0) {
-        this.usedCount += 1;
-        return (
-          <div className="ImageLayout" style={{ position: 'relative', fontSize: 50 }} ref="root" >
-          NO IMAGES
-          </div>
-        );
-      }
-    }
-    else {
-      this.usedCount += 1;
-      return (
-        <div className="ImageLayout" style={{ position: 'relative' }} ref="root">
-        {images.map(image => (
-          <div style={this.getItemStyle(image)}>
-            <ToggleableImage
-              key={image.id}
-              image={image}
-            />
-          </div>
-        ))}
+    return (
+      <div className="ImageLayout" style={{ position: 'relative' }} ref="root">
+      {images.map(image => (
+        <div style={this.getItemStyle(image)}>
+          <ToggleableImage
+            key={image.id}
+            image={image}
+          />
         </div>
-      );
-    }
+      ))}
+      </div>
+    );
+    
   }
 }
 

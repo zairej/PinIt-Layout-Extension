@@ -9,3 +9,4 @@ export const UNSELECT_ALL_IMAGES = 'UNSELECT_ALL_IMAGES';
 export const NEXT_STEP = 'NEXT_STEP';
 export const PREVIOUS_STEP = 'PREVIOUS_STEP';
 export const RESET_STEP = 'RESET_STEP';
+export const TOGGLE_IMAGES_ON_PAGE = 'TOGGLE_IMAGES_ON_PAGE';

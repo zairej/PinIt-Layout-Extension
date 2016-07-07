@@ -3,10 +3,12 @@ import images from './images';
 import canvas from './canvas';
 import isVisible from './visibility';
 import step from './step';
+import imagesOnPage from './imagesOnPage';
 
 export default combineReducers({
   images,
   canvas,
   isVisible,
   step,
+  imagesOnPage
 });

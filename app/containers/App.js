@@ -21,6 +21,7 @@ export default class App extends Component {
     this.handleBackClick = this.handleBackClick.bind(this);
     this.renderFinalizePin = this.renderFinalizePin.bind(this);
     this.renderContent = this.renderContent.bind(this);
+    this.renderNoImagesPage = this.renderNoImagesPage.bind(this);
   }
 
   handleNextClick() {
@@ -72,22 +73,35 @@ export default class App extends Component {
         <div className={style.pinPanelFooter}>
             <button className={style.btnBack} onClick={this.handleBackClick}>Back</button>
         </div>
+      </div>
+    );
+  }
 
+  renderNoImagesPage() {
+    return (
+      <div>
+        <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+        <div style={{ fontSize:50, color: 'white'}}
+        className="noImages"> NO IMAGES </div>
       </div>
     );
   }
 
   renderContent() {
-    const { step } = this.props.state;
-    switch (step) {
-      case 1:
-        return this.renderPickImages();
+    if (this.props.state.imagesOnPage) {
+      const { step } = this.props.state;
+      switch (step) {
+        case 1:
+          return this.renderPickImages();
 
-      case 2:
-        return this.renderFinalizePin();
+        case 2:
+          return this.renderFinalizePin();
 
-      default:
-        return null;
+        default:
+          return null;
+      }
+    } else {
+      return this.renderNoImagesPage();
     }
   }
 

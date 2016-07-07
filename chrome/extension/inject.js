@@ -3,12 +3,12 @@ import { render } from 'react-dom';
 import Dock from 'react-dock';
 import Root from '../../app/containers/Root';
 import createStore from '../../app/store/configureStore';
-import { replaceImages } from '../../app/actions/images';
+import { replaceImages, unselectAllImages } from '../../app/actions/images';
 import { toggleVisibility } from '../../app/actions/visibility';
 import uuid from 'uuid';
 import { removeAllCanvasImages } from '../../app/actions/canvas';
-import { unselectAllImages } from '../../app/actions/images';
 import { resetStep } from '../../app/actions/step';
+import { toggleImagesOnPage } from '../../app/actions/imagesOnPage';
 
 // TODO: Export to config file import
 const PIN_WIDTH = 236;
@@ -22,7 +22,7 @@ class InjectApp extends Component {
   constructor(props) {
     super(props);
 
-    this.store = createStore({ images: [], isVisible: false, step: 1 });
+    this.store = createStore({ images: [], isVisible: false, step: 1, imagesOnPage: false });
     this.store.subscribe(this.forceUpdate.bind(this));
 
     handleExtensionClick = () => this.buttonOnClick();
@@ -46,6 +46,11 @@ class InjectApp extends Component {
         });
       }
     });
+    if (images.length > 0) {
+      this.store.dispatch(toggleImagesOnPage(true));
+    } else {
+      this.store.dispatch(toggleImagesOnPage(false));
+    }
     this.store.dispatch(replaceImages(images));
   }
   validSite() {
