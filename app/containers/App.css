@@ -90,7 +90,17 @@
   border: none;
 }
 
-.btnSave {
+.btnNext {
+  display: block;
+  background: #bd081c;
+  color: #fff;
+  border: 0;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.btnBack {
   display: block;
   background: #bd081c;
   color: #fff;

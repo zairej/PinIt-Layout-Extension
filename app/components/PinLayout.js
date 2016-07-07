@@ -48,22 +48,7 @@ class PinLayout extends Component {
             />
           )}
         </div>
-        {/*<div className={style.canvas} style={{display:'none'}}>
-          <Surface top={0} left={0} width={PIN_WIDTH} height={DEFAULT_PIN_IMG_HEIGHT}>
-            <Gradient
-              style={this.getGradientStyle()}
-              colorStops={this.getGradientColors()}
-            />
-          </Surface>
-        </div>*/}
-        <div className={style.pinMetaWrapper}>
-          <textarea
-            type="text"
-            rows="2"
-            className={style.pinDescription}
-            placeholder="Describe your Pin"
-          />
-        </div>
+        
       </section>
     );
   }

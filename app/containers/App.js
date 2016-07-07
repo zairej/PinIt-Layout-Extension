@@ -7,34 +7,45 @@ import style from './App.css';
 import ImageLayout from '../components/ImageLayout';
 import { toggleVisibility } from '../actions/visibility';
 import { removeAllCanvasImages } from '../actions/canvas';
+import { nextStep, previousStep } from '../actions/step';
 
 
-@connect()
+@connect((state) => ({ state }))
 export default class App extends Component {
 
   constructor(props) {
     super(props);
+    
     this.handleExitClick = this.handleExitClick.bind(this);
+    this.handleNextClick = this.handleNextClick.bind(this);
+    this.handleBackClick = this.handleBackClick.bind(this);
+    this.renderFinalizePin = this.renderFinalizePin.bind(this);
+    this.renderContent = this.renderContent.bind(this);
   }
 
-  handleSave() {
-    alert('If only we had enough time! So close.');
+  handleNextClick() {
+    this.props.dispatch(nextStep(1));
+    return this.renderFinalizePin();
+  }
+
+  handleBackClick() {
+    this.props.dispatch(previousStep(2));
+    return this.renderPickImages();
   }
 
   handleExitClick() {
     this.props.dispatch(toggleVisibility(false));
     this.props.dispatch(removeAllCanvasImages());
-    document.body.style.overflow = "auto";
-    document.body.style.position = "static";
+    document.body.style.overflow = 'auto';
+    document.body.style.position = 'static';
   }
-
-  render() {
+  renderPickImages() {
     return (
       <div className={style.container}>
         <div className={style.imagesPanel}>
           <div className={style.logoHeader}>
             <img src={chrome.extension.getURL('img/P_ChoosePins.png')}
-            className={style.headerImage}/>
+              className={style.headerImage}/>
           </div>
           <div className={style.scrollPanel}>
             <ImageLayout columnWidth={236} columns={1} gutter={8} />
@@ -44,9 +55,44 @@ export default class App extends Component {
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
           <PinLayout />
           <div className={style.pinPanelFooter}>
-            <button className={style.btnSave} onClick={this.handleSave}>Save</button>
+            <button className={style.btnNext} onClick={this.handleNextClick}>Next</button>
           </div>
         </div>
+      </div>
+    );
+  }
+
+  renderFinalizePin() {
+    return (
+      <div>
+        <div style={{ fontSize:30, color: 'white' }}> AAAA </div>
+        <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+        <div className={style.pinPanelFooter}>
+            <button className={style.btnBack} onClick={this.handleBackClick}>Back</button>
+        </div>
+
+      </div>
+    );
+  }
+
+  renderContent() {
+    const { step } = this.props.state;
+    switch (step) {
+      case 1:
+        return this.renderPickImages();
+
+      case 2:
+        return this.renderFinalizePin();
+
+      default:
+        return null;
+    }
+  }
+
+  render() {
+    return (
+      <div className="ReactPinitExtension">
+        {this.renderContent()}
       </div>
     );
   }

@@ -8,7 +8,7 @@ import { toggleVisibility } from '../../app/actions/visibility';
 import uuid from 'uuid';
 import { removeAllCanvasImages } from '../../app/actions/canvas';
 import { unselectAllImages } from '../../app/actions/images';
-
+import { resetStep } from '../../app/actions/step';
 
 // TODO: Export to config file import
 const PIN_WIDTH = 236;
@@ -22,7 +22,7 @@ class InjectApp extends Component {
   constructor(props) {
     super(props);
 
-    this.store = createStore({ images: [], isVisible: false });
+    this.store = createStore({ images: [], isVisible: false, step: 1 });
     this.store.subscribe(this.forceUpdate.bind(this));
 
     handleExtensionClick = () => this.buttonOnClick();
@@ -31,7 +31,6 @@ class InjectApp extends Component {
   populateImagesIntoStore = () => {
     const images = [];
     const urls = [];
-    console.log(document.URL);
     document.querySelectorAll('img').forEach((img) => {
       if (img.width >= PIN_WIDTH && /* min width */
         img.height >= MIN_PIN_HEIGHT && /* min height */
@@ -47,7 +46,6 @@ class InjectApp extends Component {
         });
       }
     });
-    console.log(1);
     this.store.dispatch(replaceImages(images));
   }
   validSite() {
@@ -55,7 +53,6 @@ class InjectApp extends Component {
   }
 
   buttonOnClick = () => {
-
     if (!this.validSite) {
       alert(alertMessage);
     } else {
@@ -63,11 +60,10 @@ class InjectApp extends Component {
       const isVisible = !this.store.getState().isVisible;
       this.store.dispatch(toggleVisibility(isVisible));
 
-      //this.store.dispatch(replaceImages([[]]));
-      //console.log(this.store.getState('images').images, 'store');
       this.populateImagesIntoStore();
 
       if (isVisible) {
+        this.store.dispatch(resetStep());
         this.store.dispatch(unselectAllImages(this.store.getState('images').images));
         document.body.style.overflow = 'hidden';
         document.body.style.top = 0;
