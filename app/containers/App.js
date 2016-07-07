@@ -15,7 +15,7 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
-    
+
     this.handleExitClick = this.handleExitClick.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
@@ -24,13 +24,15 @@ export default class App extends Component {
   }
 
   handleNextClick() {
-    this.props.dispatch(nextStep(1));
-    return this.renderFinalizePin();
+    if (this.props.state.canvas.length === 0) {
+      alert('No images selected');
+    } else {
+      this.props.dispatch(nextStep(1));
+    }
   }
 
   handleBackClick() {
     this.props.dispatch(previousStep(2));
-    return this.renderPickImages();
   }
 
   handleExitClick() {

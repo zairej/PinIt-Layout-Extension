@@ -48,7 +48,6 @@ class PinLayout extends Component {
             />
           )}
         </div>
-        
       </section>
     );
   }
