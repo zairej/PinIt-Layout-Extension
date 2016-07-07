@@ -63,6 +63,8 @@ class PinLayoutImagePanel extends Component {
           maxConstraints={[PIN_WIDTH, MAX_PIN_HEIGHT]}
           onResize={this.handleResizableBoxResize}
         >
+        <img className={style.toggleresize} src={chrome.extension.getURL('img/resize_toggle.png')}/>
+
           <AvatarEditor
             image={image.url}
             scale={zoom}

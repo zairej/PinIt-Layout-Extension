@@ -28,6 +28,13 @@ input[type=range].zoom {
   z-index: 99;
 }
 
+.toggleresize {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right:107px;
+}
+
 
 :global(.react-resizable-handle) {
   opacity: 0;
@@ -42,6 +49,10 @@ input[type=range].zoom {
 }
 
 .PinLayoutImagePanel:hover .sliderlarge {
+  display: block;
+}
+
+.PinLayoutImagePanel:hover .toggleresize {
   display: block;
 }
 

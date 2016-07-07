@@ -2,10 +2,9 @@
   "version": "0.0.0",
   "name": "pinterest-layout-ext",
   "manifest_version": 2,
-  "description": "Pinterest layout",
+  "description": "Example for react-chrome-extension-boilerplate",
   "browser_action": {
-    "default_title": "Pinterest Layout",
-    "default_popup": "popup.html"
+    "default_title": "Pinterest Layout"
   },
   "icons": {
     "16": "img/Pin_Layout_16.png",
@@ -16,15 +15,13 @@
     "inject.html",
     "img/P_ChoosePins.png",
     "img/slider_large.png",
-    "img/slider_small.png",
+    "img/slider_small.png",  
     "img/resize_toggle.png"   
- 
   ],
   "background": {
     "page": "background.html"
   },
   "permissions": [
-    "contextMenus", "tabs", "storage", "activeTab", "<all_urls>"
-  ],
-  "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
+    "contextMenus", "tabs", "storage", "activeTab", "<all_urls>"],
+  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src * data:;"
 }
