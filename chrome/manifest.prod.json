@@ -14,7 +14,9 @@
   },
   "web_accessible_resources": [
     "inject.html",
-    "img/P_ChoosePins.png"
+    "img/P_ChoosePins.png",
+    "img/slider_large.png",
+    "img/slider_small.png" 
   ],
   "background": {
     "page": "background.html"

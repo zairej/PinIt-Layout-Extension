@@ -6,10 +6,28 @@ input[type=range].zoom {
   display: none;
   position: absolute;
   top: 5px;
-  left: 5%;
-  width: 90%;
+  left: 10%;
+  right: 10%;
+  width: 78%;
   z-index: 99;
 }
+
+.slidersmall {
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 2%;
+  z-index: 99;
+}
+
+.sliderlarge {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 2%;
+  z-index: 99;
+}
+
 
 :global(.react-resizable-handle) {
   opacity: 0;
@@ -18,6 +36,15 @@ input[type=range].zoom {
 .PinLayoutImagePanel:hover .zoom {
   display: block;
 }
+
+.PinLayoutImagePanel:hover .slidersmall {
+  display: block;
+}
+
+.PinLayoutImagePanel:hover .sliderlarge {
+  display: block;
+}
+
 .PinLayoutImagePanel:hover :global(.react-resizable-handle) {
   opacity: 1;
 }

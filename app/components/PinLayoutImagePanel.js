@@ -53,6 +53,8 @@ class PinLayoutImagePanel extends Component {
           defaultValue={DEFAULT_ZOOM}
           onChange={this.handleZoomUpdate.bind(this)}
         />
+        <img className={style.slidersmall} src={chrome.extension.getURL('img/slider_small.png')}/>
+        <img className={style.sliderlarge} src={chrome.extension.getURL('img/slider_large.png')}/>
 
         <ResizableBox
           width={PIN_WIDTH}

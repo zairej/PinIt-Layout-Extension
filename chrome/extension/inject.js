@@ -70,7 +70,10 @@ class InjectApp extends Component {
       if (isVisible) {
         this.store.dispatch(unselectAllImages(this.store.getState('images').images));
         document.body.style.overflow = 'hidden';
-        document.body.style.position = 'fixed';
+        document.body.style.top = 0;
+        document.body.style.right = 0;
+        document.body.style.bottom = 0;
+        document.body.style.left = 0;
       } else {
         this.store.dispatch(removeAllCanvasImages());
         document.body.style.overflow = 'auto';
