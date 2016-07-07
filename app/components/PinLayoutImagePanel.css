@@ -18,6 +18,8 @@ input[type=range].zoom {
   top: 5px;
   left: 2%;
   z-index: 99;
+  pointer-events: none;
+
 }
 
 .sliderlarge {
@@ -26,6 +28,16 @@ input[type=range].zoom {
   top: 5px;
   right: 2%;
   z-index: 99;
+  pointer-events: none;
+
+}
+
+.toggleresize {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right:107px;
+  pointer-events: none;
 }
 
 .toggleresize {
