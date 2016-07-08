@@ -3,7 +3,6 @@ npm-debug.log
 .DS_Store
 
 build/
-dev/
 
 *.zip
 *.crx

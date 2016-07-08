@@ -49,13 +49,13 @@ export default class App extends Component {
           <div className={style.logoHeader}>
             <img src={chrome.extension.getURL('img/P_ChoosePins.png')}
               className={style.headerImage}/>
+              <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
           </div>
           <div className={style.scrollPanel}>
             <ImageLayout columnWidth={236} columns={1} gutter={8} />
           </div>
         </div>
         <div className={style.pinPanel}>
-        <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
           <PinLayout />
           <div className={style.pinPanelFooter}>
             <button className={style.btnNext} onClick={this.handleNextClick}>Next</button>

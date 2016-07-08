@@ -84,11 +84,11 @@
 }
 
 .btnExit{
-  float: right;
   font-size: 20px;
   background-color: transparent;
   border: none;
-  color: white;
+  color: #FFF;
+  padding-left: 900px;
 }
 
 .btnNext {
