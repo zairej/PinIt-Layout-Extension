@@ -14,6 +14,7 @@ export default class App extends Component {
 
   constructor(props) {
     super(props);
+    this.state = { images: [] };
 
     this.handleExitClick = this.handleExitClick.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
@@ -31,6 +32,7 @@ export default class App extends Component {
       alert('No images selected');
     } else {
       this.props.dispatch(nextStep(1));
+      this.setState({ images: document.querySelectorAll('canvas') });
     }
   }
 
@@ -96,7 +98,7 @@ export default class App extends Component {
     return (
       <div className={style.pinPanel}>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
-        <FinalizePinLayout images={document.querySelectorAll('canvas')} />
+        <FinalizePinLayout images={this.state.images} />
         <div className={style.pinPanelFooter}>
           <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>
         </div>
@@ -154,6 +156,6 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-  state: PropTypes.object,
-  dispatch: PropTypes.object
+  state: PropTypes.object.isRequired,
+  dispatch: PropTypes.object.isRequired
 };

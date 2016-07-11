@@ -46,9 +46,9 @@ class FinalizePinLayout extends Component {
   render() {
     return (
       <Surface width={this.PIN_WIDTH} height={this.PIN_HEIGHT} left={0} top={0}>
-        {this.images.map(image => (
+        {this.images.map((image, index) => (
           <Image
-            key={this.images.indexOf(image)}
+            key={index}
             style={this.getImageStyle(image)}
             src={image.getAttribute('data-url')}
           />

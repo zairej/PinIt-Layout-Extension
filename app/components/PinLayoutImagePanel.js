@@ -66,7 +66,6 @@ class PinLayoutImagePanel extends Component {
         <img className={style.toggleresize} src={chrome.extension.getURL('img/resize_toggle.png')}/>
 
           <AvatarEditor
-            ref="editor"
             image={image.url}
             scale={zoom}
             border={0}
