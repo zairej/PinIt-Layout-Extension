@@ -31,8 +31,12 @@ class InjectApp extends Component {
   populateImagesIntoStore = () => {
     const images = [];
     const urls = [];
+    const host = window.location.hostname;
     document.querySelectorAll('img').forEach((img) => {
-      if (img.width >= PIN_WIDTH && /* min width */
+      const parser = document.createElement('a');
+      parser.href = img.src;
+      if (img.width >= PIN_WIDTH &&
+        (parser.hostname.indexOf(host) !== -1 || host.indexOf(parser.hostname) !== -1) &&
         img.height >= MIN_PIN_HEIGHT && /* min height */
         img.src.substring(0, 5) !== 'data:' && /* not B64 */
         img.src !== '' && urls.indexOf(img.src) === -1) {

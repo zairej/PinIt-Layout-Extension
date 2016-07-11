@@ -111,7 +111,7 @@ class ImageLayout extends Component {
     return (
       <div className="ImageLayout" style={{ position: 'relative' }} ref="root">
       {images.map(image => (
-        <div style={this.getItemStyle(image)}>
+        <div style={this.getItemStyle(image)} key={images.indexOf(image)}>
           <ToggleableImage
             key={image.id}
             image={image}
@@ -120,7 +120,6 @@ class ImageLayout extends Component {
       ))}
       </div>
     );
-    
   }
 }
 

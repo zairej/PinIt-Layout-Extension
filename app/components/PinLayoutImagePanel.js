@@ -27,7 +27,6 @@ class PinLayoutImagePanel extends Component {
   }
 
   handleResizableBoxResize(evt, { size }) {
-    console.log(size.height);
     this.setState({ height: size.height });
   }
 
@@ -40,6 +39,7 @@ class PinLayoutImagePanel extends Component {
   render() {
     const { image } = this.props;
     const { height, zoom, width } = this.state;
+
     return (
       <div className={style.PinLayoutImagePanel}>
         <input
@@ -66,6 +66,7 @@ class PinLayoutImagePanel extends Component {
         <img className={style.toggleresize} src={chrome.extension.getURL('img/resize_toggle.png')}/>
 
           <AvatarEditor
+            ref="editor"
             image={image.url}
             scale={zoom}
             border={0}

@@ -165,7 +165,8 @@ var AvatarEditor = React.createClass({
         var imageObj = new Image();
         imageObj.onload = this.handleImageReady.bind(this, imageObj);
         imageObj.onerror = this.props.onLoadFailure;
-        //if (!this.isDataURL(imageURL)) imageObj.crossOrigin = 'anonymous';
+        //if (!this.isDataURL(imageURL))
+        imageObj.setAttribute('crossOrigin', 'anonymous');
         imageObj.src = imageURL;
     },
 
@@ -402,14 +403,14 @@ var AvatarEditor = React.createClass({
             width: this.getDimensions().canvas.width,
             height: this.getDimensions().canvas.height,
             style: {...defaultStyle, ...this.props.style}
-        };
+       };
 
         attributes[deviceEvents.react.down] = this.handleMouseDown;
         attributes[deviceEvents.react.drag] = this.handleDragOver;
         attributes[deviceEvents.react.drop] = this.handleDrop;
         if (isTouchDevice) attributes[deviceEvents.react.mouseDown] = this.handleMouseDown;
 
-        return <canvas ref='canvas' {...attributes} />;
+        return <canvas data-url={this.getImage('image/jpeg', 1)} ref="canvas" {...attributes} />;
     }
 });
 

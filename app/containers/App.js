@@ -1,13 +1,12 @@
 import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PinLayout from '../components/PinLayout';
-import * as ImageActions from '../actions/images';
 import style from './App.css';
 import ImageLayout from '../components/ImageLayout';
 import { toggleVisibility } from '../actions/visibility';
 import { removeAllCanvasImages } from '../actions/canvas';
 import { nextStep, previousStep } from '../actions/step';
+import FinalizePinLayout from '../components/FinalizePinLayout';
 
 
 @connect((state) => ({ state }))
@@ -19,9 +18,12 @@ export default class App extends Component {
     this.handleExitClick = this.handleExitClick.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
-    this.renderFinalizePin = this.renderFinalizePin.bind(this);
     this.renderContent = this.renderContent.bind(this);
     this.renderNoImagesPage = this.renderNoImagesPage.bind(this);
+    this.renderLayoutImages = this.renderLayoutImages.bind(this);
+    this.renderInitializePin = this.renderInitializePin.bind(this);
+    this.renderFinalizePin = this.renderFinalizePin.bind(this);
+    this.renderCustomizePin = this.renderCustomizePin.bind(this);
   }
 
   handleNextClick() {
@@ -42,24 +44,49 @@ export default class App extends Component {
     document.body.style.overflow = 'auto';
     document.body.style.position = 'static';
   }
-  renderPickImages() {
+  renderLayoutImages() {
     return (
-      <div className={style.container}>
-        <div className={style.imagesPanel}>
+      <div className={style.imagesPanel}>
+        <div>
           <div className={style.logoHeader}>
-            <img src={chrome.extension.getURL('img/P_ChoosePins.png')}
-              className={style.headerImage}/>
-              <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+            <img
+              role="presentation"
+              src={chrome.extension.getURL('img/P_ChoosePins.png')}
+              className={style.headerImage}
+            />
           </div>
           <div className={style.scrollPanel}>
             <ImageLayout columnWidth={236} columns={1} gutter={8} />
           </div>
         </div>
-        <div className={style.pinPanel}>
-          <PinLayout />
-          <div className={style.pinPanelFooter}>
-            <button className={style.btnNext} onClick={this.handleNextClick}>Next</button>
-          </div>
+      </div>
+    );
+  }
+
+  renderInitializePin() {
+    return (
+      <div className={style.pinPanel}>
+        <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+        <PinLayout />
+        <div className={style.pinPanelFooter}>
+          <button className={style.btnNext} onClick={this.handleNextClick}>Next</button>
+        </div>
+      </div>
+    );
+  }
+
+  renderCustomizePin() {
+    return (
+      <div className={style.imagesPanel}>
+        <div className={style.logoHeader}>
+          <img
+            role="presentation"
+            src={chrome.extension.getURL('img/P_ChoosePins.png')}
+            className={style.headerImage}
+          />
+        </div>
+        <div className={style.scrollPanel}>
+          Text Customizaton Stuff
         </div>
       </div>
     );
@@ -67,11 +94,11 @@ export default class App extends Component {
 
   renderFinalizePin() {
     return (
-      <div>
-        <div style={{ fontSize:30, color: 'white' }}> AAAA </div>
+      <div className={style.pinPanel}>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+        <FinalizePinLayout images={document.querySelectorAll('canvas')} />
         <div className={style.pinPanelFooter}>
-            <button className={style.btnBack} onClick={this.handleBackClick}>Back</button>
+          <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>
         </div>
       </div>
     );
@@ -81,8 +108,10 @@ export default class App extends Component {
     return (
       <div>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
-        <div style={{ fontSize:50, color: 'white'}}
-        className="noImages"> NO IMAGES </div>
+        <div
+          style={{ fontSize: 50, color: 'white' }}
+          className="noImages"
+        > NO IMAGES </div>
       </div>
     );
   }
@@ -92,10 +121,20 @@ export default class App extends Component {
       const { step } = this.props.state;
       switch (step) {
         case 1:
-          return this.renderPickImages();
+          return (
+            <div className={style.container}>
+              {this.renderLayoutImages()}
+              {this.renderInitializePin()}
+            </div>
+          );
 
         case 2:
-          return this.renderFinalizePin();
+          return (
+            <div className={style.container}>
+              {this.renderCustomizePin()}
+              {this.renderFinalizePin()}
+            </div>
+          );
 
         default:
           return null;
@@ -113,3 +152,8 @@ export default class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  state: PropTypes.object,
+  dispatch: PropTypes.object
+};
