@@ -16,6 +16,7 @@ class FinalizePinLayout extends Component {
     this.getImageHeight = this.getImageHeight.bind(this);
     this.getImageStyle = this.getImageStyle.bind(this);
     this.getTextStyle = this.getTextStyle.bind(this);
+    //this.handleSave = this.handleSave.bind(this);
   }
   getImageHeight() {
     return 94;
@@ -43,8 +44,37 @@ class FinalizePinLayout extends Component {
     };
   }
 
+  handleSave(){
+    var c = document.querySelectorAll('canvas')
+    var canvas = c[0];
+    function receiveMessage(event){
+      if(event.source!== popup){
+        return;
+      }
+      if(event.data == 'pinterestReady'){
+        var payload = {
+          type:'pinImageData',
+          dataUri: canvas.toDataURL('images/jpeg')
+        };
+        popup.postMessage(payload, '*');
+        window.removeEventListener('message', receiveMessage, false);
+      }
+    }
+    window.addEventListener('message', receiveMessage, false);
+
+    var host = 'www.pinterest.com';
+    var title = document.title;
+    var pinUrl = window.location.href;
+    var url = 'https://' + host + '/pin/create/extension/?pinFave=true&url=' + encodeURIComponent(pinUrl);
+    var popupOptions = 'status=no,resizable=yes,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=750,height=320,left=0,top=0';
+    var popup = window.open(url, 'pin' + (new Date()).getTime(), popupOptions);
+   
+  }
+
+
   render() {
     return (
+      <div>
       <Surface width={this.PIN_WIDTH} height={this.PIN_HEIGHT} left={0} top={0}>
         {this.images.map((image, index) => (
           <Image
@@ -54,11 +84,15 @@ class FinalizePinLayout extends Component {
           />
         ))}
 
-        <Text style={this.getTextStyle()}>
-          HERE! Allow user to write in textbox on left and
-          customize with fonts and color
-        </Text>
-      </Surface>
+          <Text style={this.getTextStyle()}>
+            HERE! Allow user to write in textbox on left and
+            customize with fonts and color
+          </Text>
+        </Surface>
+        <div className={style.pinPanelFooter}>
+          <button className={style.btnSave} onClick={this.handleSave}>Save</button>
+        </div>
+      </div>
     );
   }
 

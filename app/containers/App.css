@@ -80,7 +80,18 @@
   bottom: 0;
   right: 0;
   width: 340px;
+  background: #bf081c;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
+}
+.pinPanelFooterBack {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 170px;
+  background: #bf081c;
+/*  box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
+*/  right: 170px;
+
 }
 
 .btnExit {
@@ -117,6 +128,9 @@
   width: 100%;
   padding: 10px 20px;
   text-align: center;
+  float: left;
+
+
 }
 
 .container {
