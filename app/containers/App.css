@@ -83,12 +83,20 @@
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
 }
 
-.btnExit{
+.btnExit {
   font-size: 20px;
   background-color: transparent;
   border: none;
   color: #FFF;
   padding-left: 900px;
+}
+
+.btnNUX {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+  padding-left: 800px;
 }
 
 .btnNext {

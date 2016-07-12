@@ -7,7 +7,7 @@ import { toggleVisibility } from '../actions/visibility';
 import { removeAllCanvasImages } from '../actions/canvas';
 import { nextStep, previousStep } from '../actions/step';
 import FinalizePinLayout from '../components/FinalizePinLayout';
-
+import NUXCarousel from '../components/NUXCarousel';
 
 @connect((state) => ({ state }))
 export default class App extends Component {
@@ -19,6 +19,8 @@ export default class App extends Component {
     this.handleExitClick = this.handleExitClick.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
+    this.handleNUXClick = this.handleNUXClick.bind(this);
+    this.renderFinalizePin = this.renderFinalizePin.bind(this);
     this.renderContent = this.renderContent.bind(this);
     this.renderNoImagesPage = this.renderNoImagesPage.bind(this);
     this.renderLayoutImages = this.renderLayoutImages.bind(this);
@@ -46,6 +48,13 @@ export default class App extends Component {
     document.body.style.overflow = 'auto';
     document.body.style.position = 'static';
   }
+
+
+  handleNUXClick() {
+    console.log("clicked");
+    this.props.dispatch(nextStep(2));
+  }
+
   renderLayoutImages() {
     return (
       <div className={style.imagesPanel}>
@@ -56,6 +65,8 @@ export default class App extends Component {
               src={chrome.extension.getURL('img/P_ChoosePins.png')}
               className={style.headerImage}
             />
+              <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+              <button className={style.btnNUX} onClick={this.handleNUXClick}>?</button>
           </div>
           <div className={style.scrollPanel}>
             <ImageLayout columnWidth={236} columns={1} gutter={8} />
@@ -68,7 +79,6 @@ export default class App extends Component {
   renderInitializePin() {
     return (
       <div className={style.pinPanel}>
-        <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
         <PinLayout />
         <div className={style.pinPanelFooter}>
           <button className={style.btnNext} onClick={this.handleNextClick}>Next</button>
@@ -99,6 +109,7 @@ export default class App extends Component {
       <div className={style.pinPanel}>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
         <FinalizePinLayout images={this.state.images} />
+        <button className={style.btnNUX} onClick={this.handleNUXClick}>?</button>
         <div className={style.pinPanelFooter}>
           <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>
         </div>
@@ -110,15 +121,15 @@ export default class App extends Component {
     return (
       <div>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
-        <div
-          style={{ fontSize: 50, color: 'white' }}
-          className="noImages"
-        > NO IMAGES </div>
+        <button className={style.btnNUX} onClick={this.handleNUXClick}>?</button>
+        <div style={{ fontSize:50, color: 'white'}}
+        className="noImages"> NO IMAGES </div>
       </div>
     );
   }
 
   renderContent() {
+    console.log(this.props.state.step);
     if (this.props.state.imagesOnPage) {
       const { step } = this.props.state;
       switch (step) {
@@ -138,6 +149,11 @@ export default class App extends Component {
             </div>
           );
 
+        case 3:
+          return (
+            <NUXCarousel/>
+          );
+
         default:
           return null;
       }
@@ -147,6 +163,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.log(this.props.state);
     return (
       <div className="ReactPinitExtension">
         {this.renderContent()}

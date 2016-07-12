@@ -1,0 +1,89 @@
+.NUXCarousel {
+    position: relative;
+
+}
+
+.NUXCarousel_items {
+    margin: auto;
+    width: 50%;
+    border: 1px solid white;
+    padding: 10px;
+
+}
+
+.inactive {
+    display: none;
+
+}
+
+.active {
+    display: block;
+
+}
+
+.slideContent {
+    height: 40em;
+
+}
+
+.NUXCarousel_controls {
+    padding: 1em;
+
+}
+
+.NUXCarousel_controls_prev {
+    display: inline;
+
+}
+
+.NUXCarousel_controls_next {
+    display: inline;
+
+}
+
+.btnPrevious {
+    margin: 1em;
+
+}
+
+.btnNext {
+    margin: 1em;
+
+}
+
+.NUXCarousel_progressDot {
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    margin: 0 4px;
+    width: 10px;
+
+}
+
+.NUXCarousel_dotsWrapper {
+    display: inline;
+    margin: auto;
+    text-align: center;
+    top: 360px;
+    width: 100%;
+
+}
+
+.progressDotActive {
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    margin: 0 4px;
+    width: 10px;
+    background-color: #fff;
+
+}
+.progressDotInactive {
+    border-radius: 50%;
+    display: inline-block;
+    height: 10px;
+    margin: 0 4px;
+    width: 10px;
+    background-color: #777;
+
+}
