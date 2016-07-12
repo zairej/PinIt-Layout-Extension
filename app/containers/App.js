@@ -69,7 +69,7 @@ export default class App extends Component {
               <button className={style.btnNUX} onClick={this.handleNUXClick}>?</button>
           </div>
           <div className={style.scrollPanel}>
-            <ImageLayout columnWidth={236} columns={1} gutter={8} />
+            <ImageLayout columnWidth={236} gutter={8} />
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@ export default class App extends Component {
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
         <FinalizePinLayout images={this.state.images} />
         <button className={style.btnNUX} onClick={this.handleNUXClick}>?</button>
-        <div className={style.pinPanelFooter}>
+        <div className={style.pinPanelFooterBack}>
           <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>
         </div>
       </div>

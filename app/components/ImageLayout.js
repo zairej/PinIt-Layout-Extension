@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 
 /*
  * The classic "masonry" style Pinterest grid
- * @prop {number} columns - the number of columns in the grid
+
  * @prop {number} columnWidth - the fixed width of the columns
  * @prop {number} gutter  - the number of columns in the grid
  * @prop {Array}  images   - the list of images to render
@@ -30,7 +30,7 @@ class ImageLayout extends Component {
   constructor(props) {
     super(props);
     // This column count may not ever be used for display
-    this.state = { columnHeights: Array.from({ length: props.columns }, () => 0) };
+    this.state = { columnHeights: [] };
     this.handleResize = this.handleResize.bind(this);
     this.usedCount = 0;
   }
@@ -71,6 +71,7 @@ class ImageLayout extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.handleResize);
+    this.updateColumnCount(this.props);
   }
 
   handleResize(evt) {
@@ -124,8 +125,6 @@ class ImageLayout extends Component {
 }
 
 ImageLayout.propTypes = {
-  // The number of columns in the grid
-  columns: PropTypes.number,
   // The fixed width of the columns in the grid
   columnWidth: PropTypes.number,
   // The size of the gutter between images
