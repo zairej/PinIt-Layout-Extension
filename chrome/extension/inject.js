@@ -22,7 +22,7 @@ class InjectApp extends Component {
   constructor(props) {
     super(props);
 
-    this.store = createStore({ images: [], isVisible: false, step: 1, imagesOnPage: false });
+    this.store = createStore({ images: [], isVisible: false, isVisibleNUX: false, step: 1, imagesOnPage: false });
     this.store.subscribe(this.forceUpdate.bind(this));
 
     handleExtensionClick = () => this.buttonOnClick();
