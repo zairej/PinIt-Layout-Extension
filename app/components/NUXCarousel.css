@@ -5,10 +5,10 @@
 
 .NUXCarousel_items {
     margin: auto;
-    width: 50%;
+    width: 80%;
     border: 1px solid white;
     padding: 10px;
-    background-color: rgba(225,225,225,0.2);
+    background-color: rgba(239,239,239,0.7);
 }
 
 .inactive {
@@ -21,11 +21,14 @@
     width: 90%;
     margin: 40px 5% 0;
     height: 500px;
-    width: 700px;
 }
 
 .slideContent {
     height: 40em;
+    width: 90%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .NUXCarousel_controls {

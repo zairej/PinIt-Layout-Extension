@@ -103,7 +103,6 @@
   background-color: transparent;
   border: none;
   color: #FFF;
-  padding-left: 900px;
 }
 
 .btnNUX {
@@ -111,7 +110,6 @@
   background-color: transparent;
   border: none;
   color: #FFF;
-  padding-left: 800px;
 }
 
 .btnNext {
@@ -137,8 +135,13 @@
   padding: 10px 20px;
   text-align: center;
   float: left;
+}
 
-
+.headerButtons {
+  display: inline;
+  width: 200px;
+  margin: 30px 400px 0 0;
+  float: right;
 }
 
 .container {

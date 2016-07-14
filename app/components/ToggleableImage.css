@@ -30,6 +30,11 @@
   transition: all 100ms ease-in-out;
   z-index: 99;
 }
+
+.checkboxnone {
+  display: none;
+}
+
 .ToggleableImage:not(.checked) .checkbox {
   opacity: 0;
   transform: scale(0.1);

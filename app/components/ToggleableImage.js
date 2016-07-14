@@ -5,10 +5,13 @@ import * as ImageActions from '../actions/images';
 import * as CanvasActions from '../actions/canvas';
 import style from './ToggleableImage.css';
 import classNames from 'classnames';
+import { toggleVisibilityNUX } from '../actions/visibilitynux';
+
 
 @connect(
  state => ({
-   images: state.images
+   images: state.images,
+   visiblenux: state.isVisibleNUX
  }),
  dispatch => ({
    imageActions: bindActionCreators(ImageActions, dispatch),
@@ -43,11 +46,23 @@ class ToggleableImage extends React.Component {
     }
   }
 
+  checkNUX() {
+     if (this.props.visiblenux) {
+      return (
+        <div className={style.checkboxnone}>✔</div>
+      );
+    } else {
+      return (
+        <div className={style.checkbox}>✔</div>
+      );
+    }
+  }
+
   render() {
     const { image } = this.props;
     return (
       <div className={classNames(style.ToggleableImage, { [style.checked]: image.isSelected })}>
-        <div className={style.checkbox}>✔</div>
+        {this.checkNUX()}
         <img
           width={236}
           src={image.url}
