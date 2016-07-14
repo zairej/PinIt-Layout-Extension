@@ -38,16 +38,17 @@
 }
 
 .pinPanel {
-  width: 340px;
   background: #d9d9d9;
+  bottom: 0;
+  box-sizing: content-box;
+  height: 100%;
+  overflow: auto;
+  padding: 30px 30px 100px 30px;
   position: absolute;
   right: 0;
   top: 0;
-  height: 100%;
-  bottom: 0;
-  padding: 30px 30px 100px 30px;
-  overflow: auto;
-  z-index: 200;
+  width: 340px;
+  z-index: 200; 
 }
 
 .logoHeader {
@@ -62,6 +63,7 @@
 }
 
 .headerImage{
+  border: 0;
   height: 70px;
   margin-top: 5px;
   margin-left: 5px;
@@ -76,13 +78,16 @@
 }
 
 .pinPanelFooter {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 340px;
   background: #bf081c;
+  bottom: 0;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
+  box-sizing: content-box;
+  height: 48px;
+  position: fixed;
+  right: 0;
+  width: 400px; 
 }
+
 .pinPanelFooterBack {
   position: fixed;
   bottom: 0;
@@ -91,7 +96,6 @@
   background: #bf081c;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
   right: 170px;
-
 }
 
 .btnExit {
@@ -111,13 +115,17 @@
 }
 
 .btnNext {
-  display: block;
   background: #bd081c;
-  color: #fff;
   border: 0;
-  width: 100%;
-  padding: 10px 20px;
+  box-sizing: content-box;
+  color: #fff;
+  display: block;
+  font-family: Arial;
+  font-size: 18px;
+  height: 38px;
+  padding: 5px 20px;
   text-align: center;
+  width: 360px; 
 }
 
 .btnBack {

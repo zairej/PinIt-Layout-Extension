@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { updateString, updateFont, updateColor, updateX, updateY, updateSize } from '../actions/text';
 
 
-const FONT_FAMILY = ['Arial', 'Arial Black', 'Courier New', 'Cursive', 'Georgia Gothic', 'Sans-serif',
-                     'Serif', 'Tahoma', 'Times New Roman', 'Verdana', 'Papyrus'];
-const STYLE = { width: '20%', backgroundColor: 'white', border: '1 px solid', color: 'black' };
+const FONT_FAMILY = ['Arial', 'Arial Black', 'Courier New', 'Cursive', 'Georgia Gothic',
+                     'Sans-serif', 'Serif', 'Tahoma', 'Times New Roman', 'Verdana', 'Papyrus'];
+const STYLE = { backgroundColor: 'white', border: '1 px solid', color: 'black',
+                height: '20px', paddingTop: '4px', paddingBottom: '4px', paddingRight: '6px',
+                paddingLeft: '6px', marginBottom: '10px', fontSize: '14px', lineHeight: '20px',
+                borderRadius: '0px', verticalAlign: 'middle', boxSizing: 'content-box' };
 
 @connect((state) => ({ state }))
 class TextLayout extends Component {
@@ -45,10 +48,11 @@ class TextLayout extends Component {
           type="text"
           value={this.props.state.text.string}
           onChange={this.handleChange}
+          style={{ ...STYLE, width: '260px' }}
         />
 
         <br />Font Family:
-        <select id="FONT" onChange={this.handleChange} style={{ ...STYLE, width: '15%' }}>
+        <select id="FONT" onChange={this.handleChange} style={{ ...STYLE, width: '120px' }}>
           {FONT_FAMILY.map((font, index) => (
             <option value={font} key={index}>{font}</option>
             ))}
@@ -60,7 +64,7 @@ class TextLayout extends Component {
           type="color"
           value={this.props.state.text.color}
           onChange={this.handleChange}
-          style={{ ...STYLE, width: '5%' }}
+          style={{ ...STYLE, width: '38px' }}
         />
 
         <br />Font Size:
@@ -72,7 +76,7 @@ class TextLayout extends Component {
           step="1"
           value={this.props.state.text.size}
           onChange={this.handleChange}
-          style={{ ...STYLE, width: '6%' }}
+          style={{ ...STYLE, width: '38px' }}
         />
 
         <br />X POS
@@ -81,7 +85,7 @@ class TextLayout extends Component {
           type="text"
           value={this.props.state.text.x}
           onChange={this.handleChange}
-          style={{ ...STYLE, width: '8%' }}
+          style={{ ...STYLE, width: '16px' }}
         />
 
         Y POS:
@@ -93,7 +97,7 @@ class TextLayout extends Component {
           step="1"
           value={this.props.state.text.y}
           onChange={this.handleChange}
-          style={{ ...STYLE, width: '8%' }}
+          style={{ ...STYLE, width: '36px' }}
         />
       </div>
     );

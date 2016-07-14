@@ -87,7 +87,7 @@ class FinalizePinLayout extends Component {
       }
       if (event.data === 'pinterestReady') {
         let payload = {
-          type: 'pinImageData',o
+          type: 'pinImageData',
           dataUri: canvas.toDataURL('images/jpeg')
         };
         popup.postMessage(payload, '*');
