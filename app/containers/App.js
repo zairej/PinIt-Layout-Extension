@@ -9,7 +9,7 @@ import { removeAllCanvasImages } from '../actions/canvas';
 import { nextStep, previousStep } from '../actions/step';
 import FinalizePinLayout from '../components/FinalizePinLayout';
 import TextLayout from '../components/TextLayout';
-import { newString } from '../actions/text';
+import { updateString } from '../actions/text';
 import NUXCarousel from '../components/NUXCarousel';
 
 @connect((state) => ({ state }))
@@ -43,7 +43,7 @@ export default class App extends Component {
 
   handleBackClick() {
     this.props.dispatch(previousStep(2));
-    this.props.dispatch(newString(''));
+    this.props.dispatch(updateString(''));
   }
 
   handleExitClick() {

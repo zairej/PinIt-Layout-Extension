@@ -9,6 +9,8 @@ import uuid from 'uuid';
 import { removeAllCanvasImages } from '../../app/actions/canvas';
 import { resetStep } from '../../app/actions/step';
 import { toggleImagesOnPage } from '../../app/actions/imagesOnPage';
+import { updateString } from '../../app/actions/text';
+
 
 // TODO: Export to config file import
 const PIN_WIDTH = 236;
@@ -94,6 +96,7 @@ class InjectApp extends Component {
         document.body.style.bottom = 0;
         document.body.style.left = 0;
       } else {
+        this.store.dispatch(updateString(''));
         this.store.dispatch(removeAllCanvasImages());
         document.body.style.overflow = 'auto';
         document.body.style.position = 'static';
