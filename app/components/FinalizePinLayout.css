@@ -1,0 +1,19 @@
+.btnSave {
+  display: block;
+  background: #bf081c;
+  color: #fff;
+  border: 0;
+  width: 100%;
+  padding: 10px 50px;
+  text-align: left;
+  right:170;
+  float:right;
+}
+.pinPanelFooter {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  background: #bf081c;
+  width: 170px;
+  box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
+}

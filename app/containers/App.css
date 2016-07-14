@@ -80,15 +80,34 @@
   bottom: 0;
   right: 0;
   width: 340px;
+  background: #bf081c;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
 }
+.pinPanelFooterBack {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 170px;
+  background: #bf081c;
+  box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
+  right: 170px;
 
-.btnExit{
+}
+
+.btnExit {
   font-size: 20px;
   background-color: transparent;
   border: none;
   color: #FFF;
   padding-left: 900px;
+}
+
+.btnNUX {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+  padding-left: 800px;
 }
 
 .btnNext {
@@ -109,6 +128,9 @@
   width: 100%;
   padding: 10px 20px;
   text-align: center;
+  float: left;
+
+
 }
 
 .container {

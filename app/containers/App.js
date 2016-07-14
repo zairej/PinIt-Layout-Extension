@@ -4,10 +4,13 @@ import PinLayout from '../components/PinLayout';
 import style from './App.css';
 import ImageLayout from '../components/ImageLayout';
 import { toggleVisibility } from '../actions/visibility';
+import { toggleVisibilityNUX } from '../actions/visibilitynux';
 import { removeAllCanvasImages } from '../actions/canvas';
 import { nextStep, previousStep } from '../actions/step';
 import FinalizePinLayout from '../components/FinalizePinLayout';
-
+import TextLayout from '../components/TextLayout';
+import { newString } from '../actions/text';
+import NUXCarousel from '../components/NUXCarousel';
 
 @connect((state) => ({ state }))
 export default class App extends Component {
@@ -19,6 +22,8 @@ export default class App extends Component {
     this.handleExitClick = this.handleExitClick.bind(this);
     this.handleNextClick = this.handleNextClick.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
+    this.handleNUXClickTrue = this.handleNUXClickTrue.bind(this);
+    this.renderFinalizePin = this.renderFinalizePin.bind(this);
     this.renderContent = this.renderContent.bind(this);
     this.renderNoImagesPage = this.renderNoImagesPage.bind(this);
     this.renderLayoutImages = this.renderLayoutImages.bind(this);
@@ -32,12 +37,13 @@ export default class App extends Component {
       alert('No images selected');
     } else {
       this.props.dispatch(nextStep(1));
-      this.setState({ images: document.querySelectorAll('canvas') });
+      this.setState({ images: Array.from(document.querySelectorAll('canvas')) });
     }
   }
 
   handleBackClick() {
     this.props.dispatch(previousStep(2));
+    this.props.dispatch(newString(''));
   }
 
   handleExitClick() {
@@ -45,7 +51,17 @@ export default class App extends Component {
     this.props.dispatch(removeAllCanvasImages());
     document.body.style.overflow = 'auto';
     document.body.style.position = 'static';
+    if (this.props.state.isVisibleNUX) {
+      this.props.dispatch(toggleVisibilityNUX(false));
+    }
   }
+
+
+  handleNUXClickTrue() {
+    this.props.dispatch(toggleVisibilityNUX(true));
+  }
+
+
   renderLayoutImages() {
     return (
       <div className={style.imagesPanel}>
@@ -56,19 +72,29 @@ export default class App extends Component {
               src={chrome.extension.getURL('img/P_ChoosePins.png')}
               className={style.headerImage}
             />
+              <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+              <button className={style.btnNUX} onClick={this.handleNUXClickTrue}>?</button>
           </div>
           <div className={style.scrollPanel}>
-            <ImageLayout columnWidth={236} columns={1} gutter={8} />
+            <ImageLayout columnWidth={236} gutter={8} />
           </div>
         </div>
+        {this.renderNUX()}
       </div>
     );
+  }
+
+  renderNUX() {
+    if (this.props.state.isVisibleNUX) {
+      return (
+        <NUXCarousel/>
+      );
+    }
   }
 
   renderInitializePin() {
     return (
       <div className={style.pinPanel}>
-        <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
         <PinLayout />
         <div className={style.pinPanelFooter}>
           <button className={style.btnNext} onClick={this.handleNextClick}>Next</button>
@@ -88,7 +114,7 @@ export default class App extends Component {
           />
         </div>
         <div className={style.scrollPanel}>
-          Text Customizaton Stuff
+          <TextLayout images={this.state.images} />
         </div>
       </div>
     );
@@ -98,7 +124,8 @@ export default class App extends Component {
     return (
       <div className={style.pinPanel}>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
-        <FinalizePinLayout images={this.state.images} />
+        <FinalizePinLayout images={this.state.images} text={this.props.state.text} />
+        <button className={style.btnNUX} onClick={this.handleNUXClickTrue}>?</button>
         <div className={style.pinPanelFooter}>
           <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>
         </div>
@@ -110,10 +137,9 @@ export default class App extends Component {
     return (
       <div>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
-        <div
-          style={{ fontSize: 50, color: 'white' }}
-          className="noImages"
-        > NO IMAGES </div>
+        <button className={style.btnNUX} onClick={this.handleNUXClickTrue}>?</button>
+        <div style={{ fontSize:50, color: 'white'}}
+        className="noImages"> NO IMAGES </div>
       </div>
     );
   }
