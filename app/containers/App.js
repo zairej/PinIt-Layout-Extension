@@ -8,6 +8,8 @@ import { toggleVisibilityNUX } from '../actions/visibilitynux';
 import { removeAllCanvasImages } from '../actions/canvas';
 import { nextStep, previousStep } from '../actions/step';
 import FinalizePinLayout from '../components/FinalizePinLayout';
+import TextLayout from '../components/TextLayout';
+import { newString } from '../actions/text';
 import NUXCarousel from '../components/NUXCarousel';
 
 @connect((state) => ({ state }))
@@ -35,12 +37,13 @@ export default class App extends Component {
       alert('No images selected');
     } else {
       this.props.dispatch(nextStep(1));
-      this.setState({ images: document.querySelectorAll('canvas') });
+      this.setState({ images: Array.from(document.querySelectorAll('canvas')) });
     }
   }
 
   handleBackClick() {
     this.props.dispatch(previousStep(2));
+    this.props.dispatch(newString(''));
   }
 
   handleExitClick() {
@@ -94,7 +97,7 @@ export default class App extends Component {
       <div className={style.pinPanel}>
         <PinLayout />
         <div className={style.pinPanelFooter}>
-          <button className={style.btnNext} onClick={this.handleNUXClickTrue}>Next</button>
+          <button className={style.btnNext} onClick={this.handleNextClick}>Next</button>
         </div>
       </div>
     );
@@ -111,7 +114,7 @@ export default class App extends Component {
           />
         </div>
         <div className={style.scrollPanel}>
-          Text Customizaton Stuff
+          <TextLayout images={this.state.images} />
         </div>
       </div>
     );
@@ -121,7 +124,7 @@ export default class App extends Component {
     return (
       <div className={style.pinPanel}>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
-        <FinalizePinLayout images={this.state.images} />
+        <FinalizePinLayout images={this.state.images} text={this.props.state.text} />
         <button className={style.btnNUX} onClick={this.handleNUXClickTrue}>?</button>
         <div className={style.pinPanelFooter}>
           <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>

@@ -5,6 +5,7 @@ import isVisible from './visibility';
 import isVisibleNUX from './visibilitynux';
 import step from './step';
 import imagesOnPage from './imagesOnPage';
+import text from './text';
 
 export default combineReducers({
   images,
@@ -12,5 +13,6 @@ export default combineReducers({
   isVisible,
   isVisibleNUX,
   step,
-  imagesOnPage
+  imagesOnPage,
+  text
 });
