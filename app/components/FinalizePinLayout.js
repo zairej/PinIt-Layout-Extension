@@ -32,7 +32,7 @@ class FinalizePinLayout extends Component {
   }
 
   splitText(context, text, padding) {
-    const maxWidth = 236 - (padding * 2);
+    const maxWidth = this.PIN_WIDTH - (padding * 2);
     const lines = [];
     const words = text.split(' ');
 
