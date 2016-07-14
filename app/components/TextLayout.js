@@ -1,8 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
-import { newText } from '../actions/text';
-=======
 import { updateString, updateFont, updateColor, updateX, updateY, updateSize } from '../actions/text';
 
 
@@ -10,44 +7,10 @@ const FONT_FAMILY = ['Arial', 'Arial Black', 'Courier New', 'Cursive', 'Georgia 
                      'Serif', 'Tahoma', 'Times New Roman', 'Verdana', 'Papyrus'];
 const STYLE = { width: '20%', backgroundColor: 'white', border: '1 px solid', color: 'black' };
 
->>>>>>> 0e6b0578014d8a0ab065b819fd89aea868ca77bb
 @connect((state) => ({ state }))
 class TextLayout extends Component {
   constructor(props) {
     super(props);
-<<<<<<< HEAD
-    this.state = { value: 'Enter Text' };
-    this.images = Array.prototype.slice.call(props.images);
-    this.PIN_WIDTH = 236;
-    this.PIN_HEIGHT = this.images.reduce((prev, curr) => prev + curr.height, 0);
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleEnterClick = this.handleEnterClick.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleEnterClick() {
-    //this.props.dispatch(newText(this.state.value));
-    const ctx = document.getElementsByTagName('canvas')[0].getContext('2d');
-    ctx.fillRect(0,0,100,100);
-    ctx.font = '20px Georgia';
-    ctx.fillText(this.state.value, 12, 45);
-  }
-
-  render() {
-    console.log(this.props.state.text);
-    return 
-      <div> Text:
-        <input
-          type="text"
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.handleEnterClick}>Enter</button>
-=======
     this.state = { text: '' };
     this.PIN_WIDTH = 236;
     this.PIN_HEIGHT = props.images.reduce((prev, curr) => prev + curr.height, 0);
@@ -132,7 +95,6 @@ class TextLayout extends Component {
           onChange={this.handleChange}
           style={{ ...STYLE, width: '8%' }}
         />
->>>>>>> 0e6b0578014d8a0ab065b819fd89aea868ca77bb
       </div>
     );
   }
@@ -140,14 +102,9 @@ class TextLayout extends Component {
 }
 
 TextLayout.propTypes = {
-<<<<<<< HEAD
-  //the list of images to render
-  images: PropTypes.object,
-=======
   images: PropTypes.array.isRequired,
   state: PropTypes.object.isRequired,
   dispatch: PropTypes.object.isRequired
->>>>>>> 0e6b0578014d8a0ab065b819fd89aea868ca77bb
 };
 
 export default TextLayout;

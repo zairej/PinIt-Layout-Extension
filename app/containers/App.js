@@ -87,7 +87,7 @@ export default class App extends Component {
   renderNUX() {
     if (this.props.state.isVisibleNUX) {
       return (
-        <NUXCarousel/>
+        <NUXCarousel />
       );
     }
   }
