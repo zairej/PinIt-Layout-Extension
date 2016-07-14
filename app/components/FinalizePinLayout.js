@@ -79,37 +79,31 @@ class FinalizePinLayout extends Component {
     });
   }
 
-  handleSave(){
-    var c = document.querySelectorAll('canvas')
-    var canvas = c[0];
-    function receiveMessage(event){
-      if(event.source!== popup){
+  handleSave() {
+    const canvas = document.getElementById('canvas');
+    function receiveMessage(event) {
+      if (event.source !== popup) {
         return;
       }
-      if(event.data == 'pinterestReady'){
-        var payload = {
-          type: 'pinImageData',
+      if (event.data === 'pinterestReady') {
+        let payload = {
+          type: 'pinImageData',o
           dataUri: canvas.toDataURL('images/jpeg')
-        }
+        };
         popup.postMessage(payload, '*');
         window.removeEventListener('message', receiveMessage, false);
       }
     }
     window.addEventListener('message', receiveMessage, false);
-
-    var host = 'www.pinterest.com';
-    var title = document.title;
-    var pinUrl = window.location.href;
-    var url = 'http://' + host + '/pin/create/extension/?pinFave=true&url=' + encodeURIComponent(pinUrl);
-    var popupOptions = 'status=no,resizable=yes,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=750,height=320,left=0,top=0';
-    var popup = window.open(url, 'pin' + (new Date()).getTime(), popupOptions);
-   
+    const url = 'http://www.pinterest.com/pin/create/extension/?pinFave=true&url=' + encodeURIComponent(window.location.href);
+    const popupOptions = 'status=no,resizable=yes,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=750,height=320,left=0,top=0';
+    const popup = window.open(url, 'pin' + (new Date()).getTime(), popupOptions);
   }
 
   render() {
     return (
       <div>
-        <canvas ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH}>
+        <canvas ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH} id='canvas'>
         </canvas>
         <div className={style.pinPanelFooter}>
               <button className={style.btnSave} onClick={this.handleSave}>Save</button>

@@ -126,7 +126,7 @@ export default class App extends Component {
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
         <FinalizePinLayout images={this.state.images} text={this.props.state.text} />
         <button className={style.btnNUX} onClick={this.handleNUXClickTrue}>?</button>
-        <div className={style.pinPanelFooter}>
+        <div className={style.pinPanelFooterBack}>
           <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>
         </div>
       </div>

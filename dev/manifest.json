@@ -23,6 +23,6 @@
     "page": "background.html"
   },
   "permissions": [
-  "contextMenus", "tabs", "storage", "activeTab", "<all_urls>"],
+    "contextMenus", "tabs", "storage", "activeTab", "<all_urls>"],
   "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src * data:;"
 }
