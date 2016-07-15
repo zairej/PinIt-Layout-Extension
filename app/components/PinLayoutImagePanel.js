@@ -11,7 +11,7 @@ const MIN_PIN_HEIGHT = 100;
 const MAX_PIN_HEIGHT = 1680 / 2;
 const MIN_ZOOM = 0.2;
 const MAX_ZOOM = 2;
-const DEFAULT_ZOOM = 1.1;
+const DEFAULT_ZOOM = 1.0;
 
 class PinLayoutImagePanel extends Component {
   constructor(props) {
