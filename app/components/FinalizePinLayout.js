@@ -102,11 +102,11 @@ class FinalizePinLayout extends Component {
 
   render() {
     return (
-      <div>
-        <canvas ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH} id='canvas'>
+      <div className={style.divCanvas}>
+        <canvas ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH} id="canvas">
         </canvas>
         <div className={style.pinPanelFooter}>
-              <button className={style.btnSave} onClick={this.handleSave}>Save</button>
+          <button className={style.btnSave} onClick={this.handleSave}>Save</button>
         </div>
       </div>
     );

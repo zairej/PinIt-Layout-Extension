@@ -17,3 +17,9 @@
   width: 170px;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
 }
+
+.divCanvas {
+  width: 236px;
+  display: inline-block;
+  position: relative;
+}

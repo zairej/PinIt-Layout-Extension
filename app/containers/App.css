@@ -37,6 +37,11 @@
   padding-left: 2rem;
 }
 
+.noImages { 
+  fontSize: 50px;
+  color: white; 
+}
+
 .pinPanel {
   background: #d9d9d9;
   bottom: 0;

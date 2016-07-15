@@ -132,10 +132,6 @@ export default class App extends Component {
   renderFinalizePin() {
     return (
       <div className={style.pinPanel}>
-        <div className={style.headerButtons}>
-          <button className={style.btnNUX} id="btnNUX" onClick={this.handleNUXClickTrue}>?</button>
-          <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
-        </div>
         <FinalizePinLayout images={this.state.images} text={this.props.state.text} />
         <div className={style.pinPanelFooterBack}>
           <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>
@@ -149,8 +145,8 @@ export default class App extends Component {
       <div>
         <button className={style.btnNUX} id="btnNUX" onClick={this.handleNUXClickTrue}>?</button>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
-        <div style={{ fontSize:50, color: 'white'}}
-        className="noImages"> NO IMAGES </div>
+        <button className={style.btnNUX} onClick={this.handleNUXClickTrue}>?</button>
+        <div className={style.noImages}> NO IMAGES </div>
       </div>
     );
   }
