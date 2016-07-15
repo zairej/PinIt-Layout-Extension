@@ -4,26 +4,26 @@
   -ms-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
   color: #fff;
-  padding: 20px;
   font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", arial, sans-serif;
+  padding: 20px;
 }
 
 .container input::-webkit-input-placeholder {
+  color: #e6e6e6;
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
 }
 
 .container input::-moz-placeholder {
+  color: #e6e6e6;
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
 }
 
 .container input::input-placeholder {
+  color: #e6e6e6;
   font-style: italic;
   font-weight: 300;
-  color: #e6e6e6;
 }
 
 .container-fluid,
@@ -57,14 +57,14 @@
 }
 
 .logoHeader {
+  background: rgba(0, 0, 0, 0.8);
   height: 80px;
-  text-align: left;
   left: 0;
-  top: 0;
   position: absolute;
+  text-align: left;
+  top: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.8);
 }
 
 .headerImage{
@@ -94,27 +94,30 @@
 }
 
 .pinPanelFooterBack {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 170px;
   background: #bf081c;
+  bottom: 0;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
-  right: 170px;
+  box-sizing: content-box;
+  height: 48px;
+  position: fixed;
+  right: 220px;
+  width: 180px;
 }
 
 .btnExit {
-  font-size: 20px;
   background-color: transparent;
   border: none;
   color: #FFF;
+  font-size: 20px;
+  padding-left: 900px;
 }
 
 .btnNUX {
-  font-size: 20px;
   background-color: transparent;
   border: none;
   color: #FFF;
+  font-size: 20px;
+  padding-left: 800px;
 }
 
 .btnNext {
@@ -132,14 +135,18 @@
 }
 
 .btnBack {
-  display: block;
   background: #bd081c;
-  color: #fff;
   border: 0;
-  width: 100%;
-  padding: 10px 20px;
-  text-align: center;
+  box-sizing: content-box;
+  color: #fff;
+  display: block;
+  font-family: Arial;
+  font-size: 18px;
   float: left;
+  height: 38px;
+  padding: 5px 20px;
+  text-align: center;
+  width: 100%;
 }
 
 .headerButtons {

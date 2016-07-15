@@ -9,6 +9,7 @@ class FinalizePinLayout extends Component {
     super(props);
     this.PIN_WIDTH = 236;
     this.PIN_HEIGHT = props.images.reduce((prev, curr) => prev + curr.height, 0);
+    this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
@@ -80,13 +81,13 @@ class FinalizePinLayout extends Component {
   }
 
   handleSave() {
-    const canvas = document.getElementById('canvas');
+    const canvas = React.findDOMNode(this.refs.CanvasImages);
     function receiveMessage(event) {
       if (event.source !== popup) {
         return;
       }
       if (event.data === 'pinterestReady') {
-        let payload = {
+        const payload = {
           type: 'pinImageData',
           dataUri: canvas.toDataURL('images/jpeg')
         };
@@ -103,7 +104,7 @@ class FinalizePinLayout extends Component {
   render() {
     return (
       <div className={style.divCanvas}>
-        <canvas ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH} id="canvas">
+        <canvas ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH}>
         </canvas>
         <div className={style.pinPanelFooter}>
           <button className={style.btnSave} onClick={this.handleSave}>Save</button>

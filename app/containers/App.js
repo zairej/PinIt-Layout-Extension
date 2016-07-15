@@ -134,7 +134,7 @@ export default class App extends Component {
       <div className={style.pinPanel}>
         <FinalizePinLayout images={this.state.images} text={this.props.state.text} />
         <div className={style.pinPanelFooterBack}>
-          <button className={style.btnNext} onClick={this.handleBackClick}>Back</button>
+          <button className={style.btnBack} onClick={this.handleBackClick}>Back</button>
         </div>
       </div>
     );
