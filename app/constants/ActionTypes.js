@@ -17,3 +17,4 @@ export const UPDATE_SIZE = 'UPDATE_SIZE';
 export const UPDATE_FONT = 'UPDATE_FONT';
 export const UPDATE_COLOR = 'UPDATE_COLOR';
 export const TOGGLE_NUX_VISIBILITY = 'TOGGLE_NUX_VISIBILITY';
+export const RESET_TEXT = 'RESET_TEXT';

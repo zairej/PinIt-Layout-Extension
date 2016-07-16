@@ -4,13 +4,14 @@
   box-sizing: content-box;
   color: #fff;
   display: block;
-  float: left;
   font-family: Arial;
   font-size: 18px;
+  float: left;
   height: 38px;
+  outline: none;
   padding: 5px 20px;
-  text-align: left;
-  width: 100%;
+  text-align: center;
+  width: 160px;
 }
 .divCanvas {
   border-radius: 6px;
@@ -18,12 +19,15 @@
   position: relative;
   width: 236px;
 }
+
+
 .pinPanelFooter {
   background: #bf081c;
   bottom: 0;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
+  box-sizing: content-box;
   height: 48px;
   position: fixed;
   right: 0;
-  width: 185px;
+  width: 200px;
 }

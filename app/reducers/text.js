@@ -12,6 +12,14 @@ export default function (state = {}, action) {
       return { ...state, font: action.font };
     case 'UPDATE_COLOR':
       return { ...state, color: action.color };
+    case 'RESET_TEXT':
+      return { string: '',
+               x: 0,
+               y: 30,
+               size: 16,
+               font: 'Arial',
+               color: '#ff0000'
+            };
     default:
       return state;
   }

@@ -19,7 +19,7 @@ class PinLayoutImagePanel extends Component {
     this.handleResizableBoxResize = throttle(this.handleResizableBoxResize.bind(this), 50);
     this.handleZoomUpdate = this.handleZoomUpdate.bind(this);
     this.state = {
-      height: (props.image.height * PIN_WIDTH)/props.image.width,
+      height: (props.image.height * PIN_WIDTH) / props.image.width,
       //Uses proportions to find the new height
       width: PIN_WIDTH,
       zoom: DEFAULT_ZOOM,

@@ -9,7 +9,7 @@ import uuid from 'uuid';
 import { removeAllCanvasImages } from '../../app/actions/canvas';
 import { resetStep } from '../../app/actions/step';
 import { toggleImagesOnPage } from '../../app/actions/imagesOnPage';
-import { updateString } from '../../app/actions/text';
+import { resetText } from '../../app/actions/text';
 
 
 // TODO: Export to config file import
@@ -31,7 +31,7 @@ class InjectApp extends Component {
       step: 1,
       imagesOnPage: false,
       text: { string: '',
-             x: 30,
+             x: 0,
              y: 30,
              size: 16,
              font: 'Arial',
@@ -96,7 +96,7 @@ class InjectApp extends Component {
         document.body.style.bottom = 0;
         document.body.style.left = 0;
       } else {
-        this.store.dispatch(updateString(''));
+        this.store.dispatch(resetText());
         this.store.dispatch(removeAllCanvasImages());
         document.body.style.overflow = 'auto';
         document.body.style.position = 'static';

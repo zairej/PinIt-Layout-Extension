@@ -100,8 +100,8 @@
   box-sizing: content-box;
   height: 48px;
   position: fixed;
-  right: 220px;
-  width: 180px;
+  right: 200px;
+  width: 200px;
 }
 
 .btnExit {
@@ -129,6 +129,7 @@
   font-family: Arial;
   font-size: 18px;
   height: 38px;
+  outline: none;
   padding: 5px 20px;
   text-align: center;
   width: 360px; 
@@ -144,9 +145,10 @@
   font-size: 18px;
   float: left;
   height: 38px;
+  outline: none;
   padding: 5px 20px;
   text-align: center;
-  width: 100%;
+  width: 160px;
 }
 
 .headerButtons {

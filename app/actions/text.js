@@ -23,3 +23,7 @@ export function updateFont(font) {
 export function updateColor(color) {
   return { type: types.UPDATE_COLOR, color };
 }
+
+export function resetText() {
+	return { type: types.RESET_TEXT };
+}

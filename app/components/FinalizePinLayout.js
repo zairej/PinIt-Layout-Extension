@@ -9,6 +9,7 @@ class FinalizePinLayout extends Component {
     super(props);
     this.PIN_WIDTH = 236;
     this.PIN_HEIGHT = props.images.reduce((prev, curr) => prev + curr.height, 0);
+    this.TEXT_PADDING = 5;
     this.handleSave = this.handleSave.bind(this);
   }
 
@@ -32,15 +33,14 @@ class FinalizePinLayout extends Component {
     };
   }
 
-  splitText(context, text, padding) {
-    const maxWidth = this.PIN_WIDTH - (padding * 2);
+  splitText(context, text, padding, startX) {
+    const maxWidth = this.PIN_WIDTH - (padding) - startX;
     const lines = [];
     const words = text.split(' ');
 
-    while (words.length) {
+    while (words.length && lines.length !== words.length) {
       let tmp = words[0];
       let line = words.shift();
-
       while (words.length && context.measureText(line).width < maxWidth) {
         tmp = words[0];
         line = line + ' ' + words.shift();
@@ -70,8 +70,8 @@ class FinalizePinLayout extends Component {
         let yChange = 0;
         yPos += image.height;
 
-        this.splitText(context, state.text.string, 10).forEach(function (line) {
-          context.fillText(line, 10, state.text.y + yChange);
+        this.splitText(context, state.text.string + ' ', this.TEXT_PADDING, state.text.x).forEach((line) => {
+          context.fillText(line, Math.max(this.TEXT_PADDING, state.text.x), state.text.y + yChange);
           yChange += state.text.size + 7;
         });
       };
@@ -104,7 +104,7 @@ class FinalizePinLayout extends Component {
   render() {
     return (
       <div className={style.divCanvas}>
-        <canvas ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH}>
+        <canvas style={{ borderRadius: '6px' }} ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH}>
         </canvas>
         <div className={style.pinPanelFooter}>
           <button className={style.btnSave} onClick={this.handleSave}>Save</button>
