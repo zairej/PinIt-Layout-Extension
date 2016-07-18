@@ -11,6 +11,8 @@ import FinalizePinLayout from '../components/FinalizePinLayout';
 import TextLayout from '../components/TextLayout';
 import { updateString } from '../actions/text';
 import NUXCarousel from '../components/NUXCarousel';
+import classNames from 'classnames';
+
 
 @connect((state) => ({ state }))
 export default class App extends Component {
@@ -61,6 +63,12 @@ export default class App extends Component {
     this.props.dispatch(toggleVisibilityNUX(true));
   }
 
+  getButtonStyle() {
+    return classNames({
+      [style.btnNUX]: false,
+      [style.open]: this.props.state.isVisibleNUX,
+    });
+  }
 
   renderLayoutImages() {
     return (
@@ -73,7 +81,7 @@ export default class App extends Component {
               className={style.headerImage}
             />
             <div className={style.headerButtons}>
-                <button className={style.btnNUX} id="btnNUX" onClick={this.handleNUXClickTrue}>?</button>
+                <button className={this.getButtonStyle()} onClick={this.handleNUXClickTrue}>?</button>
                 <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
             </div>
           </div>
@@ -88,14 +96,12 @@ export default class App extends Component {
 
   renderNUX() {
     if (this.props.state.isVisibleNUX) {
-      document.getElementById("btnNUX").style.display = "none";
       return (
         <NUXCarousel />
       );
-    } else {
-      document.getElementById("btnNUX").style.display = "inline";
     }
   }
+
 
   renderInitializePin() {
     return (
@@ -118,13 +124,14 @@ export default class App extends Component {
             className={style.headerImage}
           />
           <div className={style.headerButtons}>
-              <button className={style.btnNUX} id="btnNUX" onClick={this.handleNUXClickTrue}>?</button>
+              <button className={this.getButtonStyle()} onClick={this.handleNUXClickTrue}>?</button>
               <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
           </div>
         </div>
         <div className={style.scrollPanel}>
           <TextLayout images={this.state.images} />
         </div>
+        {this.renderNUX()}
       </div>
     );
   }
@@ -132,6 +139,10 @@ export default class App extends Component {
   renderFinalizePin() {
     return (
       <div className={style.pinPanel}>
+        <div className={style.headerButtons}>
+          <button className={this.getButtonStyle()} onClick={this.handleNUXClickTrue}>?</button>
+          <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+        </div>
         <FinalizePinLayout images={this.state.images} text={this.props.state.text} />
         <div className={style.pinPanelFooterBack}>
           <button className={style.btnBack} onClick={this.handleBackClick}>Back</button>
@@ -143,7 +154,7 @@ export default class App extends Component {
   renderNoImagesPage() {
     return (
       <div>
-        <button className={style.btnNUX} id="btnNUX" onClick={this.handleNUXClickTrue}>?</button>
+        <button className={this.getButtonStyle()} onClick={this.handleNUXClickTrue}>?</button>
         <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
         <button className={style.btnNUX} onClick={this.handleNUXClickTrue}>?</button>
         <div className={style.noImages}> NO IMAGES </div>
@@ -187,7 +198,6 @@ export default class App extends Component {
     );
   }
 }
-
 
 App.propTypes = {
   state: PropTypes.object.isRequired,

@@ -1,11 +1,50 @@
+.btnBack {
+  background: #bd081c;
+  border: 0;
+  color: #fff;
+  display: block;
+  float: left;
+  padding: 10px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.btnExit {
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+  font-size: 20px;
+}
+
+.btnNext {
+  background: #bd081c;
+  border: 0;
+  box-sizing: content-box;
+  color: #fff;
+  display: block;
+  font-family: Arial;
+  font-size: 18px;
+  height: 38px;
+  padding: 5px 20px;
+  text-align: center;
+  width: 360px;
+}
+
+.btnNUX {
+  background-color: transparent;
+  border: none;
+  color: #FFF;
+  font-size: 20px;
+}
+
 .container {
   -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
   -ms-text-rendering: optimizeLegibility;
-  text-rendering: optimizeLegibility;
   color: #fff;
   font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", arial, sans-serif;
   padding: 20px;
+  text-rendering: optimizeLegibility;
 }
 
 .container input::-webkit-input-placeholder {
@@ -35,6 +74,20 @@
 .container-fluid {
   padding-right: 2rem;
   padding-left: 2rem;
+}
+
+.headerButtons {
+  display: inline;
+  float: right;
+  margin: 30px 400px 0 0;
+  width: 200px;
+}
+
+.headerImage{
+  border: 0;
+  height: 70px;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 
 .noImages { 
@@ -67,7 +120,7 @@
   z-index: 100;
 }
 
-.headerImage{
+.headerImage {
   border: 0;
   height: 70px;
   margin-top: 5px;
@@ -97,6 +150,14 @@
   background: #bf081c;
   bottom: 0;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
+  position: fixed;
+  right: 0;
+  right: 170px;
+  width: 170px;
+}
+
+.open {
+  display: none;
   box-sizing: content-box;
   height: 48px;
   position: fixed;
@@ -177,12 +238,12 @@
   figure, figcaption, footer, header, hgroup,
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
-  	margin: 0;
-  	padding: 0;
   	border: 0;
-  	font-size: 100%;
-  	font: inherit;
-  	vertical-align: baseline;
+    font-size: 100%;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
   }
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
