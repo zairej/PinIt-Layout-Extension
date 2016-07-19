@@ -1,33 +1,11 @@
-.btnSave {
-  background: #bd081c;
-  border: 0;
-  box-sizing: content-box;
-  color: #fff;
-  display: block;
-  font-family: Arial;
-  font-size: 18px;
-  float: left;
-  height: 38px;
-  outline: none;
-  padding: 5px 20px;
-  text-align: center;
-  width: 160px;
-}
-.divCanvas {
-  border-radius: 6px;
-  display: inline-block;
-  position: relative;
-  width: 236px;
+
+.divCanvas { 
+	border-radius: 6;
+	display: inline-block;
+	position: relative;
+	width: 236px;
 }
 
-
-.pinPanelFooter {
-  background: #bf081c;
-  bottom: 0;
-  box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
-  box-sizing: content-box;
-  height: 48px;
-  position: fixed;
-  right: 0;
-  width: 200px;
+.canvasImages {
+	border-radius: 6px;
 }

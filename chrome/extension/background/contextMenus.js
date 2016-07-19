@@ -25,7 +25,7 @@ function popWindow(type) {
 
 chrome.contextMenus.create({
   id: CONTEXT_MENU_ID,
-  title: 'React Chrome Extension Example',
+  title: 'Pinit Layout Extension',
   contexts: ['all'],
   documentUrlPatterns: [
     '<all_urls>'

@@ -10,6 +10,10 @@ import * as ImageActions from '../actions/images';
 import ToggleableImage from './ToggleableImage';
 import ReactDOM from 'react-dom';
 
+
+const PINPANELWIDTH = 350;
+const MARGIN = 30;
+
 /*
  * The classic "masonry" style Pinterest grid
 
@@ -64,7 +68,7 @@ class ImageLayout extends Component {
    */
   getColumnCount(props) {
     const rootNode = ReactDOM.findDOMNode(this.refs.root);
-    const grandWidth = rootNode.parentNode.parentNode.offsetWidth;
+    const grandWidth = window.innerWidth - PINPANELWIDTH - MARGIN * 2;
     const columnCount = Math.floor((grandWidth) / (props.columnWidth + props.gutter));
     return columnCount;
   }

@@ -13,12 +13,13 @@ import { resetText } from '../../app/actions/text';
 
 
 // TODO: Export to config file import
-const PIN_WIDTH = 236;
-const MIN_PIN_HEIGHT = 200;
+const PIN_WIDTH = 100;
+const MIN_PIN_HEIGHT = 100;
 const alertMessage = 'Oops! That button doesn\'t work on Pinterest. Try using' +
                       ' the red Save button at the top of any Pin.';
 
 let handleExtensionClick = () => {};
+let checkImages = () => {};
 
 class InjectApp extends Component {
   constructor(props) {
@@ -39,9 +40,11 @@ class InjectApp extends Component {
            }
     });
 
+
     this.store.subscribe(this.forceUpdate.bind(this));
 
     handleExtensionClick = () => this.buttonOnClick();
+    checkImages = () => this.populateImagesIntoStore();
   }
 
   populateImagesIntoStore = () => {
@@ -72,15 +75,13 @@ class InjectApp extends Component {
       this.store.dispatch(toggleImagesOnPage(false));
     }
     this.store.dispatch(replaceImages(images));
-  }
-  validSite() {
-    return (window.location.href.indexOf('pinterest.com') === -1);
+    return (images.length > 0);
   }
 
   buttonOnClick = () => {
-    if (!this.validSite) {
+    if (window.location.href.indexOf('pinterest.com') !== -1) {
       alert(alertMessage);
-    } else {
+    } else if (this.store.getState().imagesOnPage) {
       this.validSite = true;
       const isVisible = !this.store.getState().isVisible;
       this.store.dispatch(toggleVisibility(isVisible));
@@ -101,6 +102,8 @@ class InjectApp extends Component {
         document.body.style.overflow = 'auto';
         document.body.style.position = 'static';
       }
+    } else {
+      alert('Oops! Either no images on this site, or images not granted access to be used.');
     }
   };
 
@@ -128,8 +131,9 @@ window.addEventListener('load', () => {
 });
 
 chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
+  (request, sender, sendResponse) => {
     if (request.toggle) {
       handleExtensionClick();
     }
+    sendResponse({ farewell: checkImages() });
   });

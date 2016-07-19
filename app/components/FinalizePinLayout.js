@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import style from './FinalizePinLayout.css';
 
-
 @connect((state) => ({ state }))
 class FinalizePinLayout extends Component {
   constructor(props) {
@@ -10,11 +9,11 @@ class FinalizePinLayout extends Component {
     this.PIN_WIDTH = 236;
     this.PIN_HEIGHT = props.images.reduce((prev, curr) => prev + curr.height, 0);
     this.TEXT_PADDING = 5;
-    this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
     this.drawCanvas(this.props);
+    this.props.rex(this.refs.CanvasImages);
   }
 
   componentDidUpdate() {
@@ -80,35 +79,11 @@ class FinalizePinLayout extends Component {
     });
   }
 
-  handleSave() {
-    const canvas = React.findDOMNode(this.refs.CanvasImages);
-    function receiveMessage(event) {
-      if (event.source !== popup) {
-        return;
-      }
-      if (event.data === 'pinterestReady') {
-        const payload = {
-          type: 'pinImageData',
-          dataUri: canvas.toDataURL('images/jpeg')
-        };
-        popup.postMessage(payload, '*');
-        window.removeEventListener('message', receiveMessage, false);
-      }
-    }
-    window.addEventListener('message', receiveMessage, false);
-    const url = 'http://www.pinterest.com/pin/create/extension/?pinFave=true&url=' + encodeURIComponent(window.location.href);
-    const popupOptions = 'status=no,resizable=yes,scrollbars=yes,personalbar=no,directories=no,location=no,toolbar=no,menubar=no,width=750,height=320,left=0,top=0';
-    const popup = window.open(url, 'pin' + (new Date()).getTime(), popupOptions);
-  }
-
   render() {
     return (
       <div className={style.divCanvas}>
-        <canvas style={{ borderRadius: '6px' }} ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH}>
+        <canvas className={style.canvasImages} ref="CanvasImages" height={this.PIN_HEIGHT} width={this.PIN_WIDTH}>
         </canvas>
-        <div className={style.pinPanelFooter}>
-          <button className={style.btnSave} onClick={this.handleSave}>Save</button>
-        </div>
       </div>
     );
   }
@@ -117,7 +92,8 @@ class FinalizePinLayout extends Component {
 
 FinalizePinLayout.propTypes = {
   images: PropTypes.array.isRequired,
-  state: PropTypes.object.isRequired
+  state: PropTypes.object.isRequired,
+  rex: PropTypes.function
 };
 
 export default FinalizePinLayout;

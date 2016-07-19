@@ -97,15 +97,14 @@
 
 .pinPanel {
   background: #d9d9d9;
-  bottom: 0;
-  box-sizing: content-box;
-  height: 100%;
+  box-sizing: border-box;
+  height: 92.3%;
   overflow: auto;
-  padding: 30px 30px 100px 30px;
+  padding: 30px 30px 30px 30px;
   position: absolute;
   right: 0;
   top: 0;
-  width: 340px;
+  width: 350px;
   z-index: 200; 
 }
 
@@ -116,7 +115,6 @@
   position: absolute;
   text-align: left;
   top: 0;
-  width: 100%;
   z-index: 100;
 }
 
@@ -140,30 +138,43 @@
   bottom: 0;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
   box-sizing: content-box;
-  height: 48px;
-  position: fixed;
+  height: 7.7%;
+  position: absolute;
   right: 0;
-  width: 400px; 
+  width: 350px; 
 }
 
 .pinPanelFooterBack {
   background: #bf081c;
   bottom: 0;
   box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
-  position: fixed;
-  right: 0;
-  right: 170px;
-  width: 170px;
+  box-sizing: content-box;
+  height: 7.7%;
+  position: absolute;
+  right: 175px;
+  width: 175px;
 }
 
 .open {
   display: none;
   box-sizing: content-box;
-  height: 48px;
-  position: fixed;
-  right: 200px;
-  width: 200px;
+  height: 7.7%;
+  position: absolute;
+  right: 175px;
+  width: 175px;
 }
+
+.pinPanelFooterSave {
+  background: #bf081c;
+  bottom: 0;
+  box-shadow: 0 -10px 20px 0 rgba(0,0,0,0.2);
+  box-sizing: content-box;
+  height: 7.7%;
+  position: absolute;
+  right: 0px;
+  width: 175px;
+}
+
 
 .btnExit {
   background-color: transparent;
@@ -181,35 +192,58 @@
   padding-left: 800px;
 }
 
-.btnNext {
+.btnSave {
   background: #bd081c;
   border: 0;
-  box-sizing: content-box;
-  color: #fff;
-  display: block;
-  font-family: Arial;
-  font-size: 18px;
-  height: 38px;
-  outline: none;
-  padding: 5px 20px;
-  text-align: center;
-  width: 360px; 
-}
-
-.btnBack {
-  background: #bd081c;
-  border: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
   color: #fff;
   display: block;
   font-family: Arial;
   font-size: 18px;
   float: left;
-  height: 38px;
+  height: 100%;
   outline: none;
   padding: 5px 20px;
   text-align: center;
-  width: 160px;
+  width: 100%;
+}
+
+.divCanvas {
+  border-radius: 6px;
+  display: inline-block;
+  position: relative;
+  width: 236px;
+}
+
+.btnNext {
+  background: #bd081c;
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  font-family: Arial;
+  font-size: 18px;
+  height: 100%;
+  outline: none;
+  padding: 5px 20px;
+  text-align: center;
+  width: 100%; 
+}
+
+.btnBack {
+  background: #bd081c;
+  border: 0;
+  box-sizing: border-box;
+  color: #fff;
+  display: block;
+  font-family: Arial;
+  font-size: 18px;
+  float: left;
+  height: 100%;
+  outline: none;
+  padding: 5px 20px;
+  text-align: center;
+  width: 100%;
 }
 
 .headerButtons {
