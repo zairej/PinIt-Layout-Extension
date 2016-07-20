@@ -8,7 +8,7 @@ const FONT_FAMILY = ['Arial', 'Arial Black', 'Courier New', 'Cursive', 'Georgia 
 const STYLE = { backgroundColor: 'white', border: '1 px solid', color: 'black',
                 height: '20px', paddingTop: '4px', paddingBottom: '4px', paddingRight: '6px',
                 paddingLeft: '6px', marginBottom: '10px', fontSize: '14px', lineHeight: '20px',
-                borderRadius: '0px', verticalAlign: 'middle', boxSizing: 'content-box' };
+                borderRadius: '0px', verticalAlign: 'middle', boxSizing: 'content-box', display: 'inline-block' };
 const TEXT_PADDING = 5;
 
 @connect((state) => ({ state }))
