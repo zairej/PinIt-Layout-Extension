@@ -5,10 +5,10 @@ import { updateString, updateFont, updateColor, updateX, updateY, updateSize } f
 
 const FONT_FAMILY = ['Arial', 'Arial Black', 'Courier New', 'Cursive', 'Georgia Gothic',
                      'Sans-serif', 'Serif', 'Tahoma', 'Times New Roman', 'Verdana', 'Papyrus'];
-const STYLE = { backgroundColor: 'white', border: '1 px solid', color: 'black',
-                height: '20px', paddingTop: '4px', paddingBottom: '4px', paddingRight: '6px',
-                paddingLeft: '6px', marginBottom: '10px', fontSize: '14px', lineHeight: '20px',
-                borderRadius: '0px', verticalAlign: 'middle', boxSizing: 'content-box', display: 'inline-block' };
+const STYLE = { backgroundColor: 'white', border: '1 px solid', color: 'black', height: '20px',
+                paddingTop: '4px', paddingBottom: '4px', paddingRight: '6px', paddingLeft: '6px',
+                marginBottom: '10px', fontSize: '14px', lineHeight: '20px', borderRadius: '0px',
+                verticalAlign: 'middle', boxSizing: 'content-box', display: 'inline-block' };
 const TEXT_PADDING = 5;
 
 @connect((state) => ({ state }))
@@ -86,7 +86,7 @@ class TextLayout extends Component {
           type="number"
           min="0"
           max={this.PIN_WIDTH - TEXT_PADDING}
-          step="1"
+          step="5"
           value={this.props.state.text.x}
           onChange={this.handleChange}
           style={{ ...STYLE, width: '36px' }}
@@ -98,7 +98,7 @@ class TextLayout extends Component {
           type="number"
           min="0"
           max={this.PIN_HEIGHT}
-          step="1"
+          step="5"
           value={this.props.state.text.y}
           onChange={this.handleChange}
           style={{ ...STYLE, width: '36px' }}
