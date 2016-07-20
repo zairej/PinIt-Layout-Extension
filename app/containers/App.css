@@ -1,46 +1,23 @@
 .btnBack {
   background: #bd081c;
   border: 0;
-  color: #fff;
-  display: block;
-  float: left;
-  padding: 10px 20px;
-  text-align: center;
-  width: 100%;
-}
-
-.btnExit {
-  background-color: transparent;
-  border: none;
-  color: #FFF;
-  font-size: 20px;
-}
-
-.btnNext {
-  background: #bd081c;
-  border: 0;
-  box-sizing: content-box;
+  box-sizing: border-box;
   color: #fff;
   display: block;
   font-family: Arial;
   font-size: 18px;
-  height: 38px;
+  float: left;
+  height: 100%;
+  outline: none;
   padding: 5px 20px;
   text-align: center;
-  width: 360px;
-}
-
-.btnNUX {
-  background-color: transparent;
-  border: none;
-  color: #FFF;
-  font-size: 20px;
+  width: 100%;
 }
 
 .container {
-  -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
   -ms-text-rendering: optimizeLegibility;
+  -webkit-text-rendering: optimizeLegibility;
   color: #fff;
   font-family: "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", arial, sans-serif;
   padding: 20px;
@@ -76,13 +53,6 @@
   padding-left: 2rem;
 }
 
-.headerButtons {
-  display: inline;
-  float: right;
-  margin: 30px 400px 0 0;
-  width: 200px;
-}
-
 .headerImage{
   border: 0;
   height: 70px;
@@ -115,14 +85,15 @@
   position: absolute;
   text-align: left;
   top: 0;
+  width: 100%;
   z-index: 100;
 }
 
 .headerImage {
   border: 0;
   height: 70px;
-  margin-top: 5px;
   margin-left: 5px;
+  margin-top: 5px;
 }
 
 .imagesPanel {
@@ -175,21 +146,40 @@
   width: 175px;
 }
 
-
 .btnExit {
   background-color: transparent;
   border: none;
-  color: #FFF;
-  font-size: 20px;
-  padding-left: 900px;
+  display: block;
+  float: right;
+  opacity: .8;
+  width: 18px !important;
+}
+
+.btnExit:hover {
+  opacity: 1;
+}
+
+.footerButtons {
+  bottom: 10px;
+  height: 45px;
+  position: fixed;
+  right: 420px;
+  width: 45px;
 }
 
 .btnNUX {
-  background-color: transparent;
-  border: none;
-  color: #FFF;
-  font-size: 20px;
-  padding-left: 800px;
+  display: block;
+  float: right;
+  opacity: .8;
+  width: 40px !important;
+}
+
+.btnNUX:hover {
+  opacity: 1;
+}
+
+.open {
+  display: none;
 }
 
 .btnSave {
@@ -230,27 +220,12 @@
   width: 100%; 
 }
 
-.btnBack {
-  background: #bd081c;
-  border: 0;
-  box-sizing: border-box;
-  color: #fff;
-  display: block;
-  font-family: Arial;
-  font-size: 18px;
-  float: left;
-  height: 100%;
-  outline: none;
-  padding: 5px 20px;
-  text-align: center;
-  width: 100%;
-}
-
 .headerButtons {
-  display: inline;
-  width: 200px;
-  margin: 30px 400px 0 0;
-  float: right;
+  height: 20px;
+  position: fixed;
+  right: 420px;
+  top: 20px;
+  width: 20px;
 }
 
 .container {
@@ -282,24 +257,24 @@
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
   footer, header, hgroup, menu, nav, section {
-  	display: block;
+    display: block;
   }
   body {
-  	line-height: 1;
+    line-height: 1;
   }
   ol, ul {
-  	list-style: none;
+    list-style: none;
   }
   blockquote, q {
-  	quotes: none;
+    quotes: none;
   }
   blockquote:before, blockquote:after,
   q:before, q:after {
-  	content: '';
-  	content: none;
+    content: '';
+    content: none;
   }
   table {
-  	border-collapse: collapse;
-  	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
   }
 }

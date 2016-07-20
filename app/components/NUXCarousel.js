@@ -76,7 +76,7 @@ class NUXCarousel extends Component {
             <div className={style.NUXCarousel}>
                 <div className={style.NUXCarousel_items}>
                     <div className={style.NUXCarousel_controls_close}>
-                        <button className={style.btnClose} onClick={this.handleNUXClickFalse}>CLOSE</button>
+                        <input type="image" className={style.btnClose} onClick={this.handleNUXClickFalse} src={chrome.extension.getURL('img/exit.png')}/>
                     </div>
                     <div className={style.slideContent}>
                         {imageUrls.map(this.renderSlide)}

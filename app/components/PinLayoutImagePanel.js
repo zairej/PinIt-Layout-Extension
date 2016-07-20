@@ -53,8 +53,8 @@ class PinLayoutImagePanel extends Component {
           defaultValue={DEFAULT_ZOOM}
           onChange={this.handleZoomUpdate.bind(this)}
         />
-        <img className={style.slidersmall} src={chrome.extension.getURL('img/slider_small.png')}/>
-        <img className={style.sliderlarge} src={chrome.extension.getURL('img/slider_large.png')}/>
+        <img className={style.slidersmall} src={chrome.extension.getURL('img/pin-small@2x.png')}/>
+        <img className={style.sliderlarge} src={chrome.extension.getURL('img/pin-medium@2x.png')}/>
 
         <ResizableBox
           width={PIN_WIDTH}
@@ -63,7 +63,7 @@ class PinLayoutImagePanel extends Component {
           maxConstraints={[PIN_WIDTH, MAX_PIN_HEIGHT]}
           onResize={this.handleResizableBoxResize}
         >
-        <img className={style.toggleresize} src={chrome.extension.getURL('img/resize_toggle.png')}/>
+        <img className={style.toggleresize} src={chrome.extension.getURL('img/drag_bar.png')}/>
 
           <AvatarEditor
             image={image.url}

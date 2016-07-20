@@ -14,7 +14,6 @@ import ReactDOM from 'react-dom';
 import NUXCarousel from '../components/NUXCarousel';
 import classNames from 'classnames';
 
-
 const PINPANELWIDTH = 350;
 const MARGIN = 30;
 
@@ -89,8 +88,8 @@ export default class App extends Component {
 
   getButtonStyle() {
     return classNames({
-      [style.btnNUX]: false,
-      [style.open]: this.props.state.isVisibleNUX
+      [style.btnNUX]: !this.props.state.isVisibleNUX,
+      [style.open]: this.props.state.isVisibleNUX,
     });
   }
 
@@ -107,8 +106,10 @@ export default class App extends Component {
               className={style.headerImage}
             />
             <div className={style.headerButtons}>
-                <button className={this.getButtonStyle()} onClick={this.handleNUXClickTrue}>?</button>
-                <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+              <input type="image" className={style.btnExit} onClick={this.handleExitClick} src={chrome.extension.getURL('img/exit.png')}/>
+            </div>
+            <div className={style.footerButtons}>
+              <input type="image" className={this.getButtonStyle()} onClick={this.handleNUXClickTrue} src={chrome.extension.getURL('img/Question_non_hover.png')}/>
             </div>
           </div>
           <div className={style.scrollPanel}>
@@ -127,6 +128,7 @@ export default class App extends Component {
       );
     }
   }
+
 
   renderInitializePin() {
     return (
@@ -151,9 +153,11 @@ export default class App extends Component {
             className={style.headerImage}
           />
           <div className={style.headerButtons}>
-              <button className={this.getButtonStyle()} onClick={this.handleNUXClickTrue}>?</button>
-              <button className={style.btnExit} onClick={this.handleExitClick}>X</button>
+              <input type="image" className={style.btnExit} onClick={this.handleExitClick} src={chrome.extension.getURL('img/exit.png')}/>
           </div>
+            <div className={style.footerButtons}>
+              <input type="image" className={this.getButtonStyle()} onClick={this.handleNUXClickTrue} src={chrome.extension.getURL('img/Question_non_hover.png')}/>
+            </div>
         </div>
         <div className={style.scrollPanel}>
           <TextLayout images={this.state.images} />
@@ -165,17 +169,23 @@ export default class App extends Component {
 
   renderFinalizePin() {
     return (
-      <div>
-        <div className={style.pinPanel}>
-          <FinalizePinLayout rex={canvas => this.canvas = canvas} images={this.state.images} text={this.props.state.text} />
+    <div>
+      <div className={style.pinPanel}>
+        <div className={style.headerButtons}>
+          <input type="image" className={style.btnExit} onClick={this.handleExitClick} src={chrome.extension.getURL('img/exit.png')}/>
         </div>
+        <div className={style.footerButtons}>
+          <input type="image" className={this.getButtonStyle()} onClick={this.handleNUXClickTrue} src={chrome.extension.getURL('img/Question_non_hover.png')}/>
+        </div>
+        <FinalizePinLayout rex={canvas => this.canvas = canvas} images={this.state.images} text={this.props.state.text} />
+      </div>
         <div className={style.pinPanelFooterBack}>
           <button className={style.btnBack} onClick={this.handleBackClick}>Back</button>
         </div>
         <div className={style.pinPanelFooterSave}>
           <button className={style.btnSave} onClick={this.handleSave}>Save</button>
         </div>
-      </div>
+    </div>
     );
   }
 
