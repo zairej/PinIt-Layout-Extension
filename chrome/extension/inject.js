@@ -10,6 +10,7 @@ import { removeAllCanvasImages } from '../../app/actions/canvas';
 import { resetStep } from '../../app/actions/step';
 import { toggleImagesOnPage } from '../../app/actions/imagesOnPage';
 import { resetText } from '../../app/actions/text';
+import { setFilter } from '../../app/actions/filter';
 
 
 // TODO: Export to config file import
@@ -37,7 +38,8 @@ class InjectApp extends Component {
              size: 16,
              font: 'Arial',
              color: '#ff0000'
-           }
+           },
+      filter: 'none'
     });
 
 
@@ -98,6 +100,7 @@ class InjectApp extends Component {
         document.body.style.left = 0;
       } else {
         this.store.dispatch(resetText());
+        this.store.dispatch(setFilter('none'));
         this.store.dispatch(removeAllCanvasImages());
         document.body.style.overflow = 'auto';
         document.body.style.position = 'static';

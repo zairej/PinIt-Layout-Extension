@@ -25,5 +25,5 @@ export function updateColor(color) {
 }
 
 export function resetText() {
-	return { type: types.RESET_TEXT };
+  return { type: types.RESET_TEXT };
 }

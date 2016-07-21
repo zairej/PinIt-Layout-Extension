@@ -13,7 +13,11 @@
   },
   "web_accessible_resources": [
     "inject.html",
-    "img/*.png"  
+    "img/P_ChoosePins.png",
+    "img/slider_large.png",
+    "img/slider_small.png",
+    "img/resize_toggle.png"   
+  
   ],
   "background": {
     "page": "background.html"

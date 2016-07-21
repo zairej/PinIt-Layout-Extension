@@ -10,6 +10,7 @@ import { nextStep, previousStep } from '../actions/step';
 import FinalizePinLayout from '../components/FinalizePinLayout';
 import TextLayout from '../components/TextLayout';
 import { updateString } from '../actions/text';
+import { setFilter } from '../actions/filter';
 import ReactDOM from 'react-dom';
 import NUXCarousel from '../components/NUXCarousel';
 import classNames from 'classnames';
@@ -35,6 +36,9 @@ export default class App extends Component {
     this.renderFinalizePin = this.renderFinalizePin.bind(this);
     this.renderCustomizePin = this.renderCustomizePin.bind(this);
     this.handleSave = this.handleSave.bind(this);
+    this.setGrey = this.setGrey.bind(this);
+    this.setSepia = this.setSepia.bind(this);
+    this.setNone = this.setNone.bind(this);
   }
 
   handleNextClick() {
@@ -49,9 +53,11 @@ export default class App extends Component {
   handleBackClick() {
     this.props.dispatch(previousStep(2));
     this.props.dispatch(updateString(''));
+    this.props.dispatch(setFilter('none'));
   }
 
   handleExitClick() {
+    this.props.dispatch(setFilter('none'));
     this.props.dispatch(toggleVisibility(false));
     this.props.dispatch(removeAllCanvasImages());
     document.body.style.overflow = 'auto';
@@ -143,6 +149,22 @@ export default class App extends Component {
     );
   }
 
+  setGrey() {
+    if (this.props.state.filter === 'grey') {
+      return this.setNone();
+    }
+    this.props.dispatch(setFilter('grey'));
+  }
+  setSepia() {
+    if (this.props.state.filter === 'sepia') {
+      return this.setNone();
+    }
+    this.props.dispatch(setFilter('sepia'));
+  }
+  setNone() {
+    this.props.dispatch(setFilter('none'));
+  }
+
   renderCustomizePin() {
     return (
       <div className={style.imagesPanel}>
@@ -163,6 +185,8 @@ export default class App extends Component {
           <TextLayout images={this.state.images} />
         </div>
         {this.renderNUX()}
+        <button className={style.filterButtongrey} onClick={this.setGrey}>GreyScale</button>
+        <button className={style.filterButtonsepia} onClick={this.setSepia}>Sepia</button>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import style from './FinalizePinLayout.css';
+import { greyFilter, sepiaFilter } from './filters';
 
 @connect((state) => ({ state }))
 class FinalizePinLayout extends Component {
@@ -64,6 +65,14 @@ class FinalizePinLayout extends Component {
 
       image.onload = () => {
         context.drawImage(image, 0, yPos);
+        const pixelInfo = context.getImageData(0, 0, canvas.width, canvas.height);
+        const data = pixelInfo.data;
+        if (state.filter === 'grey') {
+          greyFilter(data);
+        } else if (state.filter === 'sepia') {
+          sepiaFilter(data);
+        }
+        context.putImageData(pixelInfo, 0, 0);
         context.fillStyle = state.text.color;
         context.font = state.text.size + 'px ' + state.text.font;
         let yChange = 0;

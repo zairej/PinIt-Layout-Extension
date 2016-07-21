@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { updateString, updateFont, updateColor, updateX, updateY, updateSize } from '../actions/text';
-
+import style from './TextLayout.css'
 
 const FONT_FAMILY = ['Arial', 'Arial Black', 'Courier New', 'Cursive', 'Georgia Gothic',
                      'Sans-serif', 'Serif', 'Tahoma', 'Times New Roman', 'Verdana', 'Papyrus'];
 const STYLE = { backgroundColor: 'white', border: '1 px solid', color: 'black', height: '20px',
                 paddingTop: '4px', paddingBottom: '4px', paddingRight: '6px', paddingLeft: '6px',
-                marginBottom: '10px', fontSize: '14px', lineHeight: '20px', borderRadius: '0px',
-                verticalAlign: 'middle', boxSizing: 'content-box', display: 'inline-block' };
+                marginBottom: '10px', fontSize: '14px', fontFamily: 'Arial', lineHeight: '20px', borderRadius: '0px',
+                verticalAlign: 'middle', boxSizing: 'content-box', display: 'inline-block', textTransform: 'none' };
 const TEXT_PADDING = 5;
 
 @connect((state) => ({ state }))
@@ -43,7 +43,7 @@ class TextLayout extends Component {
 
   render() {
     return (
-      <div id="TextCustomizers"> Text:
+      <div className={style.TextCustomizers}> Text:
         <input
           id="STRING"
           type="text"
