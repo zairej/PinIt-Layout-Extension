@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import style from './TextLayout.css';
 import { updateString, updateFont, updateColor, updateX, updateY, updateSize } from '../actions/text';
-import style from './TextLayout.css'
 
 const FONT_FAMILY = ['Arial', 'Arial Black', 'Courier New', 'Cursive', 'Georgia Gothic',
                      'Sans-serif', 'Serif', 'Tahoma', 'Times New Roman', 'Verdana', 'Papyrus'];
