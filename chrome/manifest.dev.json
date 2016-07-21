@@ -1,28 +1,25 @@
 {
-  "version": "0.0.0",
-  "name": "pinterest-layout-ext",
-  "manifest_version": 2,
-  "description": "Example for react-chrome-extension-boilerplate",
-  "browser_action": {
-    "default_title": "Pinterest Layout"
-  },
-  "icons": {
-    "16": "img/Pin_Layout_16.png",
-    "48": "img/Pin_Layout_48.png",
-    "128": "img/Pin_Layout_128.png"
-  },
-  "web_accessible_resources": [
-    "inject.html",
-    "img/P_ChoosePins.png",
-    "img/slider_large.png",
-    "img/slider_small.png",
-    "img/resize_toggle.png"   
-  
-  ],
-  "background": {
-    "page": "background.html"
-  },
-  "permissions": [
-    "contextMenus", "tabs", "storage", "activeTab", "<all_urls>"],
-  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src * data:;"
+ "version": "0.0.0",
+ "name": "pinterest-layout-ext",
+ "manifest_version": 2,
+ "description": "Example for react-chrome-extension-boilerplate",
+ "browser_action": {
+   "default_title": "Pinterest Layout"
+ },
+ "icons": {
+   "16": "img/Pin_Layout_16.png",
+   "48": "img/Pin_Layout_48.png",
+   "128": "img/Pin_Layout_128.png"
+ },
+ "web_accessible_resources": [
+   "inject.html",
+   "img/*.png",
+   "img/*.mp4"     
+   ],
+ "background": {
+   "page": "background.html"
+ },
+ "permissions": [
+   "contextMenus", "tabs", "storage", "activeTab", "<all_urls>"],
+ "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 https://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 https://localhost:3000; style-src * 'unsafe-inline' 'self' blob:; img-src * data:;"
 }
