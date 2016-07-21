@@ -5,9 +5,20 @@ import style from './NUXCarousel.css';
 import { toggleVisibilityNUX } from '../actions/visibilitynux';
 
 const numSlides = 3;
-const imageUrls = ["https://s-media-cache-ak0.pinimg.com/564x/96/9d/cd/969dcd69995edcf2922290ada4f4cc4c.jpg", 
-    "https://s-media-cache-ak0.pinimg.com/564x/ef/eb/51/efeb51ea1987061232876a4e3fd54ca8.jpg", 
-    "https://s-media-cache-ak0.pinimg.com/564x/c4/99/5a/c4995acbcf811a9bf33cd5d86500dc30.jpg"];
+const imageUrls = [
+    {
+        type: 'img',
+        src: "https://s-media-cache-ak0.pinimg.com/564x/96/9d/cd/969dcd69995edcf2922290ada4f4cc4c.jpg" 
+    }, 
+    {
+        type: 'img',
+        src: chrome.extension.getURL('img/pin-small@2x.png') 
+    },
+    {
+        type: 'video',
+        src: chrome.extension.getURL('img/mov.mp4')
+    }];
+
 @connect((state) => ({ state }))
 class NUXCarousel extends Component {
     constructor(){
@@ -52,22 +63,17 @@ class NUXCarousel extends Component {
         }
     }
 
-
-
     renderSlide(item, index) {
-        if (this.state.offset === index) {
-            return (
-                <div  key={index}>
-                    <img src={item} className={style.active}/>
-                </div>
-            );
-        } else {
-            return (
-                <div key={index}>
-                    <img src={item} className={style.inactive}/>
-                </div>
-            );
-        }
+        const slideStyle = this.state.offset === index ? style.active : style.inactive;      
+        return (
+            <div  key={index}>
+                { item.type === 'video' ? (
+                    <video controls autoPlay src={item.src} className={slideStyle}/>
+                ): (
+                    <img src={item.src} className={slideStyle}/>
+                )}
+            </div>
+        );
     }
 
     render() {

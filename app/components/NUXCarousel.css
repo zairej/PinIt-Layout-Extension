@@ -1,6 +1,7 @@
 .NUXCarousel {
     background-color: rgba(0,0,0,0.85);
     position: relative;
+    width: 100%
 }
 
 .NUXCarousel_items {
