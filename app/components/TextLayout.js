@@ -92,7 +92,7 @@ class TextLayout extends Component {
           style={{ ...STYLE, width: '36px' }}
         />
 
-        <br />From right
+        <br />From top
         <input
           id="Y"
           type="number"
