@@ -1,31 +1,41 @@
 .NUXCarousel {
-    background-color: rgba(0,0,0,0.85);
+    background-color: white;
+    height: 700px;
+    margin: auto;
     position: relative;
-    width: 100%
+    width: 900px;
 }
 
 .NUXCarousel_items {
-    background-color: rgba(225,225,225,0.2);
-    border: 1px solid white;
+    background-color: white;
+    border: none;
+    height: 500px;
     margin: auto;
-    padding: 10px;
-    width: 50%;
+    padding: 0px;
+    width: 700px;
+    padding-top: 50px;
 }
 
 .inactive {
     display: none;
 }
 
+.overlay {
+    background-color: rgba(0,0,0,0.85);
+}
+
 .active {
     display: block;
     height: 500px;
-    margin: 40px 5% 0;
-    width: 700px;
-    width: 90%;
+    margin: auto;
+    padding: 10px;
+    width: 100%;
 }
 
 .slideContent {
-    height: 40em;
+    height: 500px;
+    width: 700px;
+    padding-bottom: 30px;
 }
 
 .NUXCarousel_controls {
@@ -46,11 +56,48 @@
 }
 
 .btnPrevious {
+    background-color: #FFFFFF;
+    border-color: #BD0A1C;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: none;
+    color: #BD0A1C;
+    font-family: helvetica;
+    font-size: 18px;
     margin: 1em;
+    opacity: 1;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+}
+
+.btnPrevious:hover {
+    background-color: #FFFFFF;
+    color: #A5081A;
+    border-color: #A5081A;
 }
 
 .btnNext {
+    background-color: #BD0A1C;
+    border-radius: 8px;
+    border: transparent;
+    box-shadow: none;
+    color: white;
+    font-family: helvetica;
+    font-size: 18px;
     margin: 1em;
+    opacity: 1;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+}
+
+.btnNext:hover {
+    background-color: #A5081A;
+    color: white;
 }
 
 .btnClose {
@@ -59,6 +106,7 @@
     display: block;
     float: right;
     opacity: 1;
+    padding: 20px 20px;
     width: 15px !important;
 }
 
@@ -83,7 +131,7 @@
  }
 
 .progressDotActive {
-    background-color: #fff;
+    background-color: #B5B5B5;
     border-radius: 50%;
     display: inline-block;
     height: 10px;
@@ -92,7 +140,7 @@
 }
 
 .progressDotInactive {
-    background-color: #777;
+    background-color: #555555;
     border-radius: 50%;
     display: inline-block;
     height: 10px;

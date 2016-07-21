@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import style from './TextLayout.css';
 import { updateString, updateFont, updateColor, updateX, updateY, updateSize } from '../actions/text';
 import style from './TextLayout.css'
 
@@ -52,23 +53,23 @@ class TextLayout extends Component {
           style={{ ...STYLE, width: '260px' }}
         />
 
-        <br />Font Family:
+        <br />Font
         <select id="FONT" onChange={this.handleChange} style={{ ...STYLE, width: '120px' }}>
           {FONT_FAMILY.map((font, index) => (
             <option value={font} key={index}>{font}</option>
             ))}
         </select>
 
-        <br />Color:
+        <br />Color
         <input
           id="COLOR"
           type="color"
           value={this.props.state.text.color}
           onChange={this.handleChange}
-          style={{ ...STYLE, width: '38px' }}
+          style={{ ...STYLE, width: '38px', paddingRight: '8px' }}
         />
 
-        <br />Font Size:
+        <br />Size
         <input
           id="FONTSIZE"
           type="number"
@@ -80,7 +81,7 @@ class TextLayout extends Component {
           style={{ ...STYLE, width: '38px' }}
         />
 
-        <br />X POS
+        <br />Location from left
         <input
           id="X"
           type="number"
@@ -92,7 +93,7 @@ class TextLayout extends Component {
           style={{ ...STYLE, width: '36px' }}
         />
 
-        Y POS:
+        <br />From right
         <input
           id="Y"
           type="number"

@@ -108,7 +108,7 @@ export default class App extends Component {
           <div className={style.logoHeader}>
             <img
               role="presentation"
-              src={chrome.extension.getURL('img/P_ChoosePins.png')}
+              src={chrome.extension.getURL('img/ChooseHeader.png')}
               className={style.headerImage}
             />
             <div className={style.headerButtons}>
@@ -140,6 +140,9 @@ export default class App extends Component {
     return (
       <div>
         <div className={style.pinPanel}>
+          <div className={style.pinPreview}>
+            <p>Preview</p>
+          </div>
           <PinLayout />
         </div>
         <div className={style.pinPanelFooter}>
@@ -171,7 +174,7 @@ export default class App extends Component {
         <div className={style.logoHeader}>
           <img
             role="presentation"
-            src={chrome.extension.getURL('img/P_ChoosePins.png')}
+            src={chrome.extension.getURL('img/CustomizeHeader.png')}
             className={style.headerImage}
           />
           <div className={style.headerButtons}>
@@ -195,6 +198,9 @@ export default class App extends Component {
     return (
     <div>
       <div className={style.pinPanel}>
+        <div className={style.pinPreview}>
+          <p>Preview</p>
+        </div>
         <div className={style.headerButtons}>
           <input type="image" className={style.btnExit} onClick={this.handleExitClick} src={chrome.extension.getURL('img/exit.png')}/>
         </div>

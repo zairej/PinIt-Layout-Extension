@@ -7,16 +7,16 @@ import { toggleVisibilityNUX } from '../actions/visibilitynux';
 const numSlides = 3;
 const imageUrls = [
     {
-        type: 'img',
-        src: "https://s-media-cache-ak0.pinimg.com/564x/96/9d/cd/969dcd69995edcf2922290ada4f4cc4c.jpg" 
+        type: 'video',
+        src: chrome.extension.getURL('img/carousel1.mp4') 
     }, 
     {
         type: 'img',
-        src: chrome.extension.getURL('img/pin-small@2x.png') 
+        src: chrome.extension.getURL('img/carousel2.png')
     },
     {
-        type: 'video',
-        src: chrome.extension.getURL('img/mov.mp4')
+        type: 'img',
+        src: chrome.extension.getURL('img/carousel3.png') 
     }];
 
 @connect((state) => ({ state }))
@@ -68,7 +68,7 @@ class NUXCarousel extends Component {
         return (
             <div  key={index}>
                 { item.type === 'video' ? (
-                    <video controls autoPlay src={item.src} className={slideStyle}/>
+                    <video autoPlay src={item.src} className={slideStyle}/>
                 ): (
                     <img src={item.src} className={slideStyle}/>
                 )}
@@ -80,22 +80,24 @@ class NUXCarousel extends Component {
         this.numSlides = imageUrls.length - 1;
         return(
             <div className={style.NUXCarousel}>
+                <div className={style.NUXCarousel_controls_close}>
+                    <input type="image" className={style.btnClose} onClick={this.handleNUXClickFalse} src={chrome.extension.getURL('img/exitnux.png')}/>
+                </div>
                 <div className={style.NUXCarousel_items}>
-                    <div className={style.NUXCarousel_controls_close}>
-                        <input type="image" className={style.btnClose} onClick={this.handleNUXClickFalse} src={chrome.extension.getURL('img/exit.png')}/>
-                    </div>
                     <div className={style.slideContent}>
                         {imageUrls.map(this.renderSlide)}
-                    </div>
-                    <div className={style.NUXCarousel_controls_prev}>
-                        <button className={style.btnPrevious} onClick={this.handlePreviousSlide}>previous</button>
                     </div>
                     <div className={style.NUXCarousel_dotsWrapper}>
                         {imageUrls.map(this.renderProgressDots)}
                     </div>
-                    <div className={style.NUXCarousel_controls_next}>
-                        <button className={style.btnNext} onClick={this.handleNextSlide}>next</button>
-                    </div>                    
+                    <div>
+                        <div className={style.NUXCarousel_controls_prev}>
+                            <button className={style.btnPrevious} onClick={this.handlePreviousSlide}>Previous</button>
+                        </div>
+                        <div className={style.NUXCarousel_controls_next}>
+                            <button className={style.btnNext} onClick={this.handleNextSlide}>Next</button>
+                        </div>  
+                    </div>                  
                 </div>
             </div>
         );
@@ -104,7 +106,6 @@ class NUXCarousel extends Component {
 
 
 export default NUXCarousel;
-
 
 
 

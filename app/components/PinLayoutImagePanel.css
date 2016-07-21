@@ -7,8 +7,8 @@ input[type=range].zoom {
   left: 10%;
   position: absolute;
   right: 10%;
-  top: 5px;
-  width: 78%;
+  top: 10px;
+  width: 80%;
   z-index: 99;
 }
 
@@ -17,7 +17,7 @@ input[type=range].zoom {
   left: 2%;
   pointer-events: none;
   position: absolute;
-  top: 5px;
+  top: 10px;
   width: 3.5%;
   z-index: 99;
 }
@@ -27,7 +27,7 @@ input[type=range].zoom {
   pointer-events: none;
   position: absolute;
   right: 2%;
-  top: 5px;
+  top: 10px;
   width: 4.5%;
   z-index: 99;
 }
@@ -46,6 +46,9 @@ input[type=range].zoom {
 
 .PinLayoutImagePanel:hover .zoom {
   display: block;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .PinLayoutImagePanel:hover .slidersmall {

@@ -1,4 +1,11 @@
 
+.pinPreview {
+  color: #555555;
+  font-size: 18px;
+  font-family: helvetica;
+  font-weight: bold;
+}
+
 .container {
   -moz-text-rendering: optimizeLegibility;
   -ms-text-rendering: optimizeLegibility;
@@ -39,10 +46,9 @@
 }
 
 .headerImage{
-  border: 0;
-  height: 70px;
-  margin-top: 5px;
-  margin-left: 5px;
+  border: 0 !important;
+  height: 50px !important;
+  margin: 15px !important;
 }
 
 .noImages { 
@@ -138,6 +144,11 @@
   float: right;
   opacity: .8;
   width: 18px !important;
+  box-sizing: initial !important;
+  border: none !important;
+  box-shadow: none !important;
+  box-shadow: transparent !important;
+  background-color: transparent !important;
 }
 
 .btnExit:hover {
@@ -157,6 +168,11 @@
   float: right;
   opacity: .8;
   width: 40px !important;
+  box-sizing: initial !important;
+  border: none !important;
+  box-shadow: none !important;
+  box-shadow: transparent !important;
+  background-color: transparent !important;
 }
 
 .btnNUX:hover {
